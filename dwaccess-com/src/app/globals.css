@@ -3,7 +3,7 @@
 
 :root{
   --bg:#070a0f;
-  --bgdwaccess: rgba(62, 140, 192, .92);
+  --bgdwaccess: rgba(37, 39, 41, 0.92);
   --fg:#edeff6;
   --muted:rgba(237,239,246,.72);
 
@@ -20,7 +20,7 @@
 /* base */
 html,body{height:100%}
 body{
-  background: var(--bg);
+  background: var(--bgdwaccess);
   color: var(--fg);
 }
 
@@ -50,3 +50,8 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
+.image {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2.5rem;
+}

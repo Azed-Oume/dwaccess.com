@@ -58,7 +58,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-3xl border border-black/[0.12] bg-white/60 backdrop-blur-xl p-6 shadow-sm"
+      className="rounded-3xl border border-black/12 bg-white/60 backdrop-blur-xl p-6 shadow-sm"
     >
       {/* Honeypot anti-bot */}
       <input
@@ -77,7 +77,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
             id="name"
             name="name"
             required
-            className="mt-2 w-full rounded-2xl border border-black/[0.12] bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
+            className="mt-2 w-full rounded-2xl border border-black/12 bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
             placeholder="Azed"
           />
         </div>
@@ -89,7 +89,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
             name="email"
             type="email"
             required
-            className="mt-2 w-full rounded-2xl border border-black/[0.12] bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
+            className="mt-2 w-full rounded-2xl border border-black/12 bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
             placeholder="az@exemple.com"
           />
         </div>
@@ -101,7 +101,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
           id="subject"
           name="subject"
           required
-          className="mt-2 w-full rounded-2xl border border-black/[0.12] bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
+          className="mt-2 w-full rounded-2xl border border-black/12 bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
           placeholder="Demande de devis — site vitrine"
         />
       </div>
@@ -113,7 +113,7 @@ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
           name="message"
           required
           rows={6}
-          className="mt-2 w-full resize-none rounded-2xl border border-black/[0.12] bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
+          className="mt-2 w-full resize-none rounded-2xl border border-black/12 bg-white px-4 py-3 text-sm outline-none focus:border-black/30"
           placeholder="Décris ton besoin : objectif, pages, délai, budget (si tu veux)…"
         />
       </div>

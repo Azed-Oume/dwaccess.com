@@ -1,3 +1,5 @@
+// dwaccess-com/src/components/Header.tsx
+
 "use client";
 
 import Link from "next/link";
@@ -25,9 +27,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-black font-semibold">
-            D
-          </span>
+          <img
+              src="/logo/logodwaccess.png"
+            alt="Logo TAXI PREMIUM"
+            className="image"
+            />
           <span className="font-semibold tracking-tight">DWACCESS</span>
         </Link>
 
