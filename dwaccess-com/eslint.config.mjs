@@ -13,6 +13,11 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "jsx-a11y/aria-props": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

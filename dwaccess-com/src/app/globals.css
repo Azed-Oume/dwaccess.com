@@ -1,26 +1,52 @@
+/* dwaccess-com/src/app/globals.css — Premium Dark (Tailwind v4) */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  --bg:#070a0f;
+  --bgdwaccess: rgba(62, 140, 192, .92);
+  --fg:#edeff6;
+  --muted:rgba(237,239,246,.72);
+
+
+  --card: rgba(255,255,255,.06);
+  --cardHover: rgba(255,255,255,.08);
+
+  --border: rgba(255,255,255,.12);
+  --borderHover: rgba(255,255,255,.18);
+
+  --shadow: 0 1px 0 rgba(255,255,255,.06);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* base */
+html,body{height:100%}
+body{
+  background: var(--bg);
+  color: var(--fg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* glows */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(99,102,241,.18), transparent 55%),
+    radial-gradient(900px 500px at 60% 85%, rgba(34,211,238,.12), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.35));
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* noise */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.06;
+  mix-blend-mode: overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
+
