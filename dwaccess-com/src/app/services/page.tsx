@@ -1,4 +1,5 @@
 // dwaccess-com/src/app/services/page.tsx
+
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -11,27 +12,27 @@ export const metadata: Metadata = {
 const blocks = [
   {
     title: "Site vitrine (pro)",
-    desc: "Idéal pour présenter ton activité, inspirer confiance et capter des demandes.",
+    desc: "Idéal pour présenter votre activité, inspirer confiance et capter des demandes.",
     bullets: [
-      "Structure SEO + pages rapides",
-      "Design moderne + responsive",
+      "Structure SEO et pages rapides",
+      "Design moderne et responsive",
       "Contenu clair orienté conversion",
       "Mise en ligne + HTTPS",
     ],
   },
   {
     title: "Application web",
-    desc: "Quand tu as besoin d’un dashboard, d’un espace client, d’une logique métier.",
+    desc: "Quand vous avez besoin d’un dashboard, d’un espace client ou d’une logique métier.",
     bullets: [
-      "Front React/Next.js",
-      "API Node/Express (si nécessaire)",
+      "Front React / Next.js",
+      "API Node / Express (si nécessaire)",
       "Base SQL + Sequelize",
       "Rôles, auth, admin",
     ],
   },
   {
     title: "SEO technique & performance",
-    desc: "Tu veux rank et charger vite, sans sacrifier le design.",
+    desc: "Pour se positionner et charger vite, sans sacrifier le design.",
     bullets: [
       "Optimisation vitesse (LCP/CLS)",
       "Metadata, OpenGraph",
@@ -96,7 +97,7 @@ export default function ServicesPage() {
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/6 px-6 py-3 text-sm font-medium text-white hover:bg-white/1"
                 >
-                  Discuter du besoin
+                  Discuter de votre besoin
                 </Link>
               </div>
             </div>
@@ -105,9 +106,9 @@ export default function ServicesPage() {
 
         {/* CTA bas de page */}
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-          <p className="text-sm font-semibold text-white">Tu veux un devis rapide ?</p>
+          <p className="text-sm font-semibold text-white">Vous souhaitez un devis rapide ?</p>
           <p className="mt-2 text-sm text-white/70">
-            Explique ton besoin (objectif, pages/fonctionnalités, délai). Je te réponds avec
+            Expliquez votre besoin (objectif, pages/fonctionnalités, délai). Je vous répondrai avec
             une proposition claire.
           </p>
 

@@ -1,4 +1,5 @@
 // dwaccess-com/src/app/projets/page.tsx
+
 import type { Metadata } from "next";
 import { projects } from "@/content/projects";
 
@@ -24,8 +25,8 @@ export default function ProjetsPage() {
 
         {/* Intro */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-          Une sélection de projets représentatifs : plateformes, apps, outils et produits.
-          L’idée : montrer une capacité à livrer du concret, pas juste “faire joli”.
+          Une sélection de projets représentatifs : plateformes, applications, outils et produits.
+          L’objectif : montrer une capacité à livrer du concret, pas uniquement du “design”.
         </p>
 
         {/* Cards */}

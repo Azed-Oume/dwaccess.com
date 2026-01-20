@@ -6,23 +6,20 @@ export default function CaseStudies() {
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
-        {/* Badge */}
+
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
           <span className="h-2 w-2 rounded-full bg-violet-400" />
           Projets & réalisations
         </div>
 
-        {/* Titre */}
         <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
           Quelques projets représentatifs
         </h2>
 
-        {/* Sous-titre */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
           Produits, outils internes, SaaS : du concret, livré proprement.
         </p>
 
-        {/* Cards */}
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {projects.map((p) => (
             <div
@@ -75,7 +72,6 @@ export default function CaseStudies() {
           ))}
         </div>
 
-        {/* CTA secondaire */}
         <div className="mt-8">
           <Link
             href="/projets"
@@ -84,6 +80,7 @@ export default function CaseStudies() {
             Voir tous les détails
           </Link>
         </div>
+
       </div>
     </section>
   );

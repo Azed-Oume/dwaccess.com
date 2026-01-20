@@ -7,7 +7,7 @@ const offers = [
     price: "à partir de 900€",
     bullets: [
       "1 à 5 pages",
-      "Design premium + responsive",
+      "Design premium et responsive",
       "SEO technique de base",
       "Performance & accessibilité",
       "Déploiement + HTTPS",
@@ -17,9 +17,9 @@ const offers = [
     title: "Application web",
     price: "à partir de 2 500€",
     bullets: [
-      "Front React/Next",
-      "API Node/Express (si besoin)",
-      "Auth / dashboard / admin",
+      "Front React / Next.js",
+      "API Node / Express (si nécessaire)",
+      "Authentification / dashboard / administration",
       "Base de données (SQL)",
       "Évolutivité & règles métier",
     ],
@@ -30,7 +30,7 @@ const offers = [
     bullets: [
       "Correctifs & améliorations",
       "Sécurité & mises à jour",
-      "Optimisations SEO/perf",
+      "Optimisations SEO / performance",
       "Support & suivi",
       "Roadmap produit",
     ],
@@ -42,24 +42,20 @@ export default function Offers() {
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
 
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 
                         px-3 py-1 text-xs text-white/80">
           <span className="h-2 w-2 rounded-full bg-indigo-400" />
           Services proposés
         </div>
 
-        {/* Titre */}
         <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
           Services & prestations
         </h2>
 
-        {/* Sous-titre */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-          Des solutions propres, performantes et faites pour durer.
+          Des solutions durables, performantes et construites avec soin.
         </p>
 
-        {/* Cards */}
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {offers.map((o) => (
             <div
@@ -82,7 +78,10 @@ export default function Offers() {
               </ul>
 
               <div className="mt-6">
-                <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
+                >
                   Demander un devis
                 </Link>
               </div>

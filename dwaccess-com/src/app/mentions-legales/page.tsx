@@ -1,4 +1,5 @@
 // dwaccess-com/src/app/mentions-legales/page.tsx
+
 import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 
@@ -23,8 +24,9 @@ export default function MentionsLegalesPage() {
 
         <div className="mt-10 space-y-8 text-sm text-white/70 md:text-base">
           <p>
-            Ce site est édité par <span className="font-semibold text-white">{siteConfig.legalName}</span>{" "}
-            — {siteConfig.city}.
+            Ce site est édité par{" "}
+            <span className="font-semibold text-white">{siteConfig.legalName}</span> —{" "}
+            {siteConfig.city}.
           </p>
 
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)]">
@@ -46,20 +48,24 @@ export default function MentionsLegalesPage() {
 
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)]">
             <h2 className="text-base font-semibold text-white">Hébergement</h2>
-            <p className="mt-3">Hébergement : Vercel / ou autre selon déploiement (à compléter si nécessaire).</p>
+            <p className="mt-3">
+              Hébergement : Vercel (ou autre selon déploiement). À compléter si nécessaire.
+            </p>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)]">
             <h2 className="text-base font-semibold text-white">Données personnelles</h2>
             <p className="mt-3">
               Ce site ne collecte pas de données personnelles sans votre consentement.
-              Si un formulaire est mis en place, les données transmises servent uniquement à répondre à votre demande.
+              Si un formulaire est mis en place, les informations transmises servent uniquement à répondre à votre demande.
             </p>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)]">
             <h2 className="text-base font-semibold text-white">Cookies</h2>
-            <p className="mt-3">Ce site peut utiliser des cookies techniques et/ou de mesure d’audience (optionnel).</p>
+            <p className="mt-3">
+              Ce site peut utiliser des cookies techniques et/ou de mesure d’audience (optionnel).
+            </p>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)]">

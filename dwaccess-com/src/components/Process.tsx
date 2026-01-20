@@ -2,19 +2,19 @@
 const steps = [
   {
     title: "1) Cadrage",
-    desc: "Objectif, pages, fonctionnalités, contenu, planning. On évite les surprises.",
+    desc: "Objectifs, pages, fonctionnalités, contenu, planning. On évite les mauvaises surprises.",
   },
   {
     title: "2) Design & structure",
-    desc: "Wireframe simple → structure SEO → UI premium et lisible.",
+    desc: "Wireframe simple → structure SEO → interface lisible et professionnelle.",
   },
   {
     title: "3) Développement",
-    desc: "Implémentation propre, responsive, perf, et validation régulière.",
+    desc: "Implémentation propre, responsive, performante, avec validations régulières.",
   },
   {
     title: "4) Mise en ligne",
-    desc: "Déploiement, DNS/SSL, analytics (si voulu), et plan de maintenance.",
+    desc: "Déploiement, DNS/SSL, analytics (si souhaités) et plan de maintenance.",
   },
 ];
 
@@ -22,23 +22,20 @@ export default function Process() {
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
-        {/* Badge */}
+
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
           <span className="h-2 w-2 rounded-full bg-amber-400" />
           Méthode
         </div>
 
-        {/* Titre */}
         <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-          Process simple & carré
+          Process simple & efficace
         </h2>
 
-        {/* Sous-titre */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-          Transparent, efficace, sans flou : tu sais toujours où on en est.
+          Transparent, clair et structuré : vous savez toujours exactement où nous en sommes.
         </p>
 
-        {/* Cards */}
         <div className="mt-12 grid gap-4 md:grid-cols-4">
           {steps.map((s) => (
             <div
@@ -50,6 +47,7 @@ export default function Process() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

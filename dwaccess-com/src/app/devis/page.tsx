@@ -1,4 +1,5 @@
 // dwaccess-com/src/app/devis/page.tsx
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
@@ -25,19 +26,19 @@ export default function DevisPage() {
 
         {/* Intro */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-          Réponds à 4 questions et je te renvoie une estimation + un plan d’action.
+          Répondez à 4 questions, et je vous renverrai une estimation ainsi qu’un plan d’action.
         </p>
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {/* Card 1 */}
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-            <p className="text-sm font-semibold text-white">Ce que j’ai besoin de savoir</p>
+            <p className="text-sm font-semibold text-white">Ce dont j’ai besoin pour estimer</p>
 
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
-              <li>Ton activité + objectif (vendre, crédibilité, prise de RDV…)</li>
-              <li>Pages souhaitées (Accueil, Services, Projets, Contact…)</li>
-              <li>Deadline (date)</li>
-              <li>Budget indicatif (même une fourchette)</li>
+              <li>Votre activité et votre objectif (vente, crédibilité, prise de RDV…)</li>
+              <li>Les pages souhaitées (Accueil, Services, Projets, Contact…)</li>
+              <li>Votre deadline (date)</li>
+              <li>Votre budget indicatif (même une fourchette)</li>
             </ul>
 
             <div className="mt-6">
@@ -52,9 +53,9 @@ export default function DevisPage() {
 
           {/* Card 2 */}
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-            <p className="text-sm font-semibold text-white">Ou sinon… contact classique</p>
+            <p className="text-sm font-semibold text-white">Ou bien : contact classique</p>
             <p className="mt-2 text-sm text-white/70">
-              Si tu préfères discuter avant, passe par la page contact.
+              Si vous préférez échanger avant, vous pouvez passer par la page Contact.
             </p>
 
             <div className="mt-6">

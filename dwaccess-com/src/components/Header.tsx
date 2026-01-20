@@ -1,5 +1,4 @@
 // dwaccess-com/src/components/Header.tsx
-
 "use client";
 
 import Link from "next/link";
@@ -15,7 +14,6 @@ const nav = [
 export default function Header() {
   const [open, setOpen] = useState(false);
 
-  // Bloque le scroll quand le menu mobile est ouvert
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -28,10 +26,10 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <img
-              src="/logo/logodwaccess.png"
-            alt="Logo TAXI PREMIUM"
+            src="/logo/logodwaccess.png"
+            alt="Logo DWACCESS"
             className="image"
-            />
+          />
           <span className="font-semibold tracking-tight">DWACCESS</span>
         </Link>
 
@@ -54,7 +52,7 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Mobile burger */}
+        {/* Mobile */}
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-xl border border-white/15 p-2 hover:bg-white/10 md:hidden"
@@ -64,25 +62,14 @@ export default function Header() {
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             {open ? (
-              <path
-                d="M6 6l12 12M18 6L6 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             ) : (
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             )}
           </svg>
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {open ? (
         <div className="md:hidden">
           <div className="border-t border-white/10 bg-black">
@@ -109,7 +96,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Backdrop */}
           <button
             type="button"
             className="fixed inset-0 -z-10 bg-black/40"

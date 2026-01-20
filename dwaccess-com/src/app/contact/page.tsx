@@ -1,4 +1,5 @@
 // dwaccess-com/src/app/contact/page.tsx
+
 import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 import ContactForm from "@/components/ContactForm";
@@ -25,8 +26,8 @@ export default function ContactPage() {
 
         {/* Intro */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-          Dis-moi ce que tu veux construire (objectif, pages, fonctionnalités, délai). Je réponds
-          rapidement avec un plan et une estimation.
+          Indiquez ce que vous souhaitez construire (objectif, pages, fonctionnalités, délai).
+          Je vous répondrai rapidement avec un plan et une estimation.
         </p>
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
@@ -88,12 +89,12 @@ export default function ContactPage() {
 
             {/* Bloc aide */}
             <div className="mt-6 rounded-2xl border border-white/12 bg-white/6 p-4 text-sm text-white/70">
-              <p className="font-medium text-white">Pour un devis rapide, indique :</p>
+              <p className="font-medium text-white">Pour un devis rapide, merci d’indiquer :</p>
               <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>Ton activité + objectif du site/app</li>
-                <li>Pages / fonctionnalités attendues</li>
-                <li>Délai souhaité</li>
-                <li>Exemples de sites que tu aimes (si tu en as)</li>
+                <li>Votre activité et l’objectif du site / de l’application</li>
+                <li>Les pages / fonctionnalités attendues</li>
+                <li>Le délai souhaité</li>
+                <li>Des exemples de sites que vous appréciez (si vous en avez)</li>
               </ul>
             </div>
           </div>

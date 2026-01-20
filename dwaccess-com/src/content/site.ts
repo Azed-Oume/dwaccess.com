@@ -6,12 +6,12 @@ export const siteConfig = {
   domain: "dwaccess.com",
   url: "https://www.dwaccess.com",
   email: "contact@dwaccess.com",
-  whatsapp: "https://wa.me/33768221452", // Mets ton lien WhatsApp si tu veux (ex: "https://wa.me/33...")
-  linkedin: "https://www.linkedin.com/in/azzedine-oume-developpeur-full-stack/", // Mets ton lien LinkedIn si tu veux
+  whatsapp: "https://wa.me/33768221452",
+  linkedin: "https://www.linkedin.com/in/azzedine-oume-developpeur-full-stack/",
   github: "https://github.com/Azed-Oume",
-  tagline: "Développeur Web Full-Stack freelance",
+  tagline: "Agence de création de sites & applications web",
   headline: "Sites & applications web rapides, propres et maintenables.",
   subheadline:
-    "Je t’accompagne du cadrage au déploiement : design, développement, SEO technique et maintenance. Une approche humaine, des délais tenus, du code solide.",
+    "Je vous accompagne du cadrage au déploiement : design, développement, SEO technique et maintenance. Une approche humaine, des délais tenus, du code solide.",
   ogImage: "/og.jpg",
 };

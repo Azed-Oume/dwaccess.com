@@ -2,19 +2,19 @@
 const items = [
   {
     title: "Accompagnement humain",
-    desc: "Tu restes maître du projet. Je conseille, j’exécute, et je m’adapte en cours de route.",
+    desc: "Vous restez maître du projet. Je vous conseille, j’exécute et je m’adapte en fonction de vos besoins.",
   },
   {
     title: "Stack moderne & solide",
-    desc: "React / Next.js / Node / SQL. Une base propre pour évoluer sans tout casser.",
+    desc: "React, Next.js, Node, SQL : une base propre et évolutive.",
   },
   {
     title: "SEO & performance",
-    desc: "Structure, metadata, vitesse, accessibilité : un site qui rank et qui charge vite.",
+    desc: "Structure, métadonnées, vitesse, accessibilité : un site qui se positionne et charge rapidement.",
   },
   {
     title: "Déploiement & suivi",
-    desc: "Mise en ligne, DNS, SSL, monitoring basique, correctifs et maintenance.",
+    desc: "Mise en ligne, DNS, SSL, monitoring de base, correctifs et maintenance.",
   },
 ];
 
@@ -23,24 +23,20 @@ export default function Proofs() {
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
 
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 
                         px-3 py-1 text-xs text-white/80">
           <span className="h-2 w-2 rounded-full bg-sky-400" />
           Pourquoi travailler avec moi
         </div>
 
-        {/* Titre */}
         <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-          Un accompagnement fiable & propre
+          Un accompagnement fiable & professionnel
         </h2>
 
-        {/* Sous-titre */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-          Un site pro doit être solide, rapide et durable. Voici ce qui change tout dans ma méthode.
+          Un site professionnel doit être solide, rapide et évolutif. Voici ce qui fait la différence dans mon approche.
         </p>
 
-        {/* Cards */}
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {items.map((it) => (
             <div
@@ -55,6 +51,7 @@ export default function Proofs() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
