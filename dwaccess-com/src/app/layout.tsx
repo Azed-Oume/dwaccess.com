@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/content/site";
+import ClientShell from "./ClientShell";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -28,12 +29,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr"
-    >
+    <html lang="fr">
       <body suppressHydrationWarning className="min-h-dvh antialiased flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {/* ✅ Le Provider doit wrapper l'app */}
+        <ClientShell>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ClientShell>
       </body>
     </html>
   );

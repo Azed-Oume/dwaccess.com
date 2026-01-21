@@ -1,8 +1,8 @@
-// dwaccess-com/src/app/devis/page.tsx
+// dwaccess-com/src/app/devis/DevisPage.tsx
 
 import type { Metadata } from "next";
-import Link from "next/link";
 import { siteConfig } from "@/content/site";
+import DevisProvider from "./DevisProvider";
 
 export const metadata: Metadata = {
   title: "Demander un devis",
@@ -13,24 +13,20 @@ export default function DevisPage() {
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
           <span className="h-2 w-2 rounded-full bg-sky-400" />
           Devis
         </div>
 
-        {/* Titre */}
         <h1 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
           Demander un devis
         </h1>
 
-        {/* Intro */}
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
           Répondez à 4 questions, et je vous renverrai une estimation ainsi qu’un plan d’action.
         </p>
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
-          {/* Card 1 */}
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
             <p className="text-sm font-semibold text-white">Ce dont j’ai besoin pour estimer</p>
 
@@ -51,21 +47,13 @@ export default function DevisPage() {
             </div>
           </div>
 
-          {/* Card 2 */}
           <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
             <p className="text-sm font-semibold text-white">Ou bien : contact classique</p>
             <p className="mt-2 text-sm text-white/70">
               Si vous préférez échanger avant, vous pouvez passer par la page Contact.
             </p>
 
-            <div className="mt-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/6 px-6 py-3 text-sm font-medium text-white hover:bg-white/1"
-              >
-                Aller à Contact
-              </Link>
-            </div>
+            <DevisProvider />
           </div>
         </div>
       </div>

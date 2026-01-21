@@ -1,8 +1,10 @@
 // src/components/CTA.tsx
-import Link from "next/link";
-import { siteConfig } from "@/content/site";
+"use client"
+
+import { useContactModal } from "@/app/modal/ContactModalProvider";
 
 export default function CTA() {
+  const { openContact } = useContactModal();
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
@@ -26,12 +28,13 @@ export default function CTA() {
         {/* Bloc CTA */}
         <div className="mt-12 rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
-            >
-              Contact / devis
-            </Link>
+            <button
+            type="button"
+            onClick={() => openContact("Demande de devis")}
+            className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
+          >
+            Nous contacter
+          </button>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center">

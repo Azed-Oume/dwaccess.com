@@ -1,5 +1,7 @@
 // src/components/Offers.tsx
-import Link from "next/link";
+"use client";
+
+import { useContactModal } from "@/app/modal/ContactModalProvider";
 
 const offers = [
   {
@@ -38,12 +40,13 @@ const offers = [
 ];
 
 export default function Offers() {
+  const { openContact } = useContactModal();
+  
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
 
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 
-                        px-3 py-1 text-xs text-white/80">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
           <span className="h-2 w-2 rounded-full bg-indigo-400" />
           Services proposés
         </div>
@@ -60,11 +63,7 @@ export default function Offers() {
           {offers.map((o) => (
             <div
               key={o.title}
-              className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl
-                         shadow-[0_1px_0_rgba(255,255,255,0.06)]
-                         transition-all duration-200 ease-out 
-                         hover:-translate-y-1 hover:border-white/20 hover:bg-white/8"
-            >
+              className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
               <p className="text-sm font-semibold text-white">{o.title}</p>
               <p className="mt-2 text-sm text-white/70">{o.price}</p>
 
@@ -78,12 +77,14 @@ export default function Offers() {
               </ul>
 
               <div className="mt-6">
-                <Link
-                  href="/contact"
+                {/* Bouton qui ouvre la modal */}
+                <button
+                  type="button"
+                  onClick={() => openContact("Demande de devis")}
                   className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
                 >
-                  Demander un devis
-                </Link>
+                  Nous contacter
+                </button>
               </div>
             </div>
           ))}

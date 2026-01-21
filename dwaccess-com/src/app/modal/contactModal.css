@@ -1,0 +1,161 @@
+
+
+@layer components {
+  .tp-modal-card {
+    @apply rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)];
+  }
+
+  .tp-label {
+    @apply text-sm font-medium text-white;
+  }
+
+  .tp-input {
+    @apply mt-2 w-full rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-white/25 focus:ring-2 focus:ring-white/10;
+  }
+
+  .tp-btn-close {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/6 text-white/80 hover:bg-white/10 hover:text-white disabled:opacity-60;
+  }
+
+  .tp-btn-submit {
+    @apply inline-flex items-center justify-center rounded-2xl bg-emerald-400 px-6 py-3 text-sm font-semibold text-black hover:bg-emerald-300 disabled:opacity-60;
+  }
+}
+
+
+
+
+/* =========================
+   CONTACT - STYLE DEMO (comme capture)
+   ========================= */
+
+.contact-wrap {
+  /* Fond image plein écran */
+  min-height: calc(100vh - 80px); /* ajuste selon ton header */
+  padding: 32px 0 48px;
+  background-image: url("/images/contact-airport.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* voile léger sur l’image (très subtil, comme la capture) */
+.contact-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.contact-wrap > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bandeau "site de démonstration" */
+.demo-banner {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  border-radius: 8px;
+  padding: 12px 18px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* La card "glass" sombre (le coeur du style) */
+.contact-glass {
+  background: rgba(10, 18, 28, 0.62); /* sombre translucide */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+
+/* padding intérieur "gros bloc" comme sur la capture */
+.contact-glass .card-body {
+  padding: 28px 28px 22px;
+}
+
+/* Typo titres */
+.contact-glass h1 {
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* Texte intro */
+.contact-intro {
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 18px;
+  line-height: 1.45;
+}
+
+/* Labels */
+.contact-glass .form-label {
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Inputs sombres + contours nets */
+.contact-glass .form-control,
+.contact-glass textarea.form-control {
+  background: rgba(14, 22, 34, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+
+.contact-glass .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+/* focus vert (proche du bouton de la capture) */
+.contact-glass .form-control:focus {
+  border-color: rgba(25, 135, 84, 0.95);
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+/* FormText (aide) en gris clair */
+.contact-glass .form-text {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+/* Bouton plein largeur, gros, vert */
+.contact-submit {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 6px;
+  font-weight: 800;
+}
+
+/* Optionnel: hauteur textarea proche capture */
+.contact-glass textarea.form-control {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Responsive: la card respire mieux sur mobile */
+@media (max-width: 576px) {
+  .contact-glass .card-body {
+    padding: 20px;
+  }
+}
+
+/* Blur si supporté (glass effect) */
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .contact-glass {
+    -webkit-backdrop-filter: blur(10px); /* Safari */
+    backdrop-filter: blur(10px);         /* Standard */
+  }
+}
+
+
+

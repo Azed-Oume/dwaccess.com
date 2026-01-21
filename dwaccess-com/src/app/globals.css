@@ -1,6 +1,10 @@
 /* dwaccess-com/src/app/globals.css — Premium Dark (Tailwind v4) */
 @import "tailwindcss";
 
+/* ✅ ajoutez ceci */
+@import "./modal/contactModal.css";
+
+
 :root{
   --bg:#000000;
   --bgdwaccess: rgba(37, 39, 41, 0.92);
@@ -21,6 +25,7 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 html {
@@ -45,4 +50,77 @@ body {
   height: 3rem;
 }
 
-/* on supprime le noise */
+
+
+/* ---------- Boutons flottants : base commune ---------- */
+.tp-float,
+.floating-contact-btn,
+.tp-float-btn {
+  position: fixed;
+  right: 16px;
+  z-index: 99999;
+  box-sizing: border-box;
+  max-width: calc(100vw - 32px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* ---------- Contact (bouton) ---------- */
+.floating-contact-btn {
+  bottom: 128px; /* au-dessus du WhatsApp */
+  border-radius: 999px !important;
+  padding: 10px 14px !important;
+  font-weight: 700;
+}
+
+/* stabilise le transform si vous l’utilisez */
+.floating-contact--follow { transform: translate3d(0, 140px, 0); }
+.floating-contact--snap   { transform: translate3d(0, 0, 0); }
+
+/* ---------- WhatsApp + Top harmonisés ---------- */
+.tp-float-btn {
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* WhatsApp */
+.tp-float-btn--wa {
+  bottom: 72px;
+  width: 52px;
+  height: 52px;
+}
+
+/* Scroll To Top */
+.tp-float-btn--top {
+  bottom: 16px;
+  width: 48px;
+  height: 48px;
+  font-weight: 800;
+}
+
+/* ======================================================
+   Tailwind components (OK si dans globals.css)
+   ====================================================== */
+@layer components {
+  .tp-modal-card {
+    @apply rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)];
+  }
+
+  .tp-label {
+    @apply text-sm font-medium text-white;
+  }
+
+  .tp-input {
+    @apply mt-2 w-full rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-white/25 focus:ring-2 focus:ring-white/10;
+  }
+
+  .tp-btn-close {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/6 text-white/80 hover:bg-white/10 hover:text-white disabled:opacity-60;
+  }
+
+  .tp-btn-submit {
+    @apply inline-flex items-center justify-center rounded-2xl bg-emerald-400 px-6 py-3 text-sm font-semibold text-black hover:bg-emerald-300 disabled:opacity-60;
+  }
+}
