@@ -29,7 +29,7 @@ export default function Hero() {
         </p>
 
         {/* CTA */}
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex justify-center gap-3 sm:flex-row">
 
           {/* Bouton qui ouvre la modal */}
           <button

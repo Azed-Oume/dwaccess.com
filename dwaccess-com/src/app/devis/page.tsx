@@ -2,7 +2,7 @@
 
 import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
-import DevisProvider from "./DevisProvider";
+import OpenContactButton from "../modal/OpenContactButton";
 
 export const metadata: Metadata = {
   title: "Demander un devis",
@@ -52,8 +52,7 @@ export default function DevisPage() {
             <p className="mt-2 text-sm text-white/70">
               Si vous préférez échanger avant, vous pouvez passer par la page Contact.
             </p>
-
-            <DevisProvider />
+            <OpenContactButton />
           </div>
         </div>
       </div>

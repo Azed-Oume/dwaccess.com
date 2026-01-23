@@ -1,7 +1,7 @@
 // src/components/Offers.tsx
 "use client";
 
-import { useContactModal } from "@/app/modal/ContactModalProvider";
+import OpenContactButton from "@/app/modal/OpenContactButton";
 
 const offers = [
   {
@@ -40,7 +40,6 @@ const offers = [
 ];
 
 export default function Offers() {
-  const { openContact } = useContactModal();
   
   return (
     <section className="px-4 py-14">
@@ -75,19 +74,11 @@ export default function Offers() {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-6">
-                {/* Bouton qui ouvre la modal */}
-                <button
-                  type="button"
-                  onClick={() => openContact("Demande de devis")}
-                  className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
-                >
-                  Nous contacter
-                </button>
-              </div>
             </div>
           ))}
+        </div>
+        <div className="mt-6 flex  justify-center">
+          <OpenContactButton />
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import OpenContactButton from "../modal/OpenContactButton";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -91,43 +92,48 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-6">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/6 px-6 py-3 text-sm font-medium text-white hover:bg-white/1"
-                >
-                  Discuter de votre besoin
-                </Link>
-              </div>
             </div>
           ))}
+        </div>
+        <div className="mt-6 flex  justify-center">
+          <OpenContactButton />
         </div>
 
         {/* CTA bas de page */}
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-          <p className="text-sm font-semibold text-white">Vous souhaitez un devis rapide ?</p>
-          <p className="mt-2 text-sm text-white/70">
-            Expliquez votre besoin (objectif, pages/fonctionnalités, délai). Je vous répondrai avec
-            une proposition claire.
-          </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
-            >
-              Me contacter
-            </Link>
+          {/* Conteneur vertical */}
+          <div className="flex flex-col items-center text-center">
 
-            <Link
-              href="/projets"
-              className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/6 px-6 py-3 text-sm font-medium text-white hover:bg-white/1"
-            >
-              Voir des exemples
-            </Link>
+            {/* Texte */}
+            <div>
+              <p className="text-xl font-semibold text-white">
+                Vous souhaitez un devis rapide ?
+              </p>
+              <p className="mt-2 text-xl text-white max-w-xl">
+                Expliquez votre besoin (objectif, pages/fonctionnalités, délai).
+                Je vous répondrai avec une proposition claire.
+              </p>
+            </div>
+
+            {/* Boutons */}
+            <div className="mt-6 flex w-full flex-col sm:flex-row sm:justify-around gap-4">
+
+              <OpenContactButton 
+                className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90 w-full sm:w-auto"
+              />
+
+              <Link
+                href="/projets"
+                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/6 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 w-full sm:w-auto"
+              >
+                Voir des exemples
+              </Link>
+
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

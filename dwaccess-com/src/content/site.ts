@@ -8,7 +8,6 @@ export const siteConfig = {
   email: "contact@dwaccess.com",
   whatsapp: "https://wa.me/33768221452",
   linkedin: "https://www.linkedin.com/in/azzedine-oume-developpeur-full-stack/",
-  github: "https://github.com/Azed-Oume",
   tagline: "Agence de création de sites & applications web",
   headline: "Sites & applications web rapides, propres et maintenables.",
   subheadline:

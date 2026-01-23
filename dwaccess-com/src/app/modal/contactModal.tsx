@@ -121,8 +121,7 @@ export default function ContactModal({ show, onHide, title }: ContactModalProps)
       : "border-white/15 bg-white/6 text-white/80";
 
   return (
-    <div
-      className="fixed inset-0 z-100 flex items-center justify-center px-4 py-8"
+    <div className="tp-modal-overlay"
       aria-modal="true"
       role="dialog"
       aria-labelledby={`${formId}-title`}

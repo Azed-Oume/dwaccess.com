@@ -42,20 +42,6 @@ export default function ContactInfo() {
             </a>
           </p>
         ) : null}
-
-        {siteConfig.github ? (
-          <p>
-            <span className="font-medium text-white">GitHub :</span>{" "}
-            <a
-              className="underline underline-offset-4 decoration-white/20 hover:decoration-white/50"
-              href={siteConfig.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {siteConfig.github}
-            </a>
-          </p>
-        ) : null}
       </div>
 
       <div className="mt-6 rounded-2xl border border-white/12 bg-white/6 p-4 text-sm text-white/70">

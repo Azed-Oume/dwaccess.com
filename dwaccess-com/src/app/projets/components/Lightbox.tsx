@@ -37,14 +37,13 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
 
   // DOM refs
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const imgRef = useRef<HTMLImageElement | null>(null);
 
   // Transform refs (pas de re-render)
   const scaleRef = useRef(1);
   const txRef = useRef(0);
   const tyRef = useRef(0);
 
-  // Drag state refs
+  // Drag refs
   const draggingRef = useRef(false);
   const lastMoveRef = useRef<{ x: number; y: number; t: number } | null>(null);
   const velocityRef = useRef<{ vx: number; vy: number }>({ vx: 0, vy: 0 });
@@ -58,15 +57,16 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     d: number;
     scale: number;
     center: { x: number; y: number };
-    tx: number;
-    ty: number;
   } | null>(null);
 
   // Controls auto-hide
   const [controlsVisible, setControlsVisible] = useState(true);
   const hideTimerRef = useRef<number | null>(null);
 
-  // Bounds (simple + efficace)
+  // UI state (pour re-render le curseur grab/grabbing proprement)
+  const [isDragging, setIsDragging] = useState(false);
+
+  // Bounds
   const boundsRef = useRef<{ maxX: number; maxY: number }>({ maxX: 0, maxY: 0 });
 
   const isZoomed = () => scaleRef.current > 1.01;
@@ -76,6 +76,13 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     if (!title) return `Visuel ${index + 1}`;
     return `${title} — visuel ${index + 1}`;
   }, [open, title, index]);
+
+  const stopInertia = () => {
+    if (inertiaRafRef.current) {
+      cancelAnimationFrame(inertiaRafRef.current);
+      inertiaRafRef.current = null;
+    }
+  };
 
   const setVars = (scale: number, tx: number, ty: number) => {
     scaleRef.current = scale;
@@ -95,8 +102,8 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
-    // Approximation propre : quand on zoom, on autorise un déplacement proportionnel à (scale - 1)
-    // -> évite de mesurer image/contain, reste fluide et stable.
+
+    // Approximation simple et stable : plus on zoom, plus on autorise de pan
     const extraX = (scaleRef.current - 1) * rect.width * 0.5;
     const extraY = (scaleRef.current - 1) * rect.height * 0.5;
 
@@ -108,25 +115,20 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
 
   const clampToBounds = (tx: number, ty: number) => {
     const { maxX, maxY } = boundsRef.current;
-    const clampedX = clamp(tx, -maxX, maxX);
-    const clampedY = clamp(ty, -maxY, maxY);
-    return { x: clampedX, y: clampedY };
+    return {
+      x: clamp(tx, -maxX, maxX),
+      y: clamp(ty, -maxY, maxY),
+    };
   };
 
-  const stopInertia = () => {
-    if (inertiaRafRef.current) {
-      cancelAnimationFrame(inertiaRafRef.current);
-      inertiaRafRef.current = null;
-    }
-  };
-
-  const resetView = () => {
+  const hardResetTransform = () => {
     stopInertia();
     pinchingRef.current = false;
     pinchStartRef.current = null;
     draggingRef.current = false;
     lastMoveRef.current = null;
     velocityRef.current = { vx: 0, vy: 0 };
+    setIsDragging(false);
 
     setVars(1, 0, 0);
     recalcBounds();
@@ -134,13 +136,11 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
 
   const goPrev = () => {
     if (!canPrev) return;
-    resetView();
     onChangeIndex(index - 1);
   };
 
   const goNext = () => {
     if (!canNext) return;
-    resetView();
     onChangeIndex(index + 1);
   };
 
@@ -150,15 +150,27 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     hideTimerRef.current = window.setTimeout(() => setControlsVisible(false), 2000);
   };
 
-  // Init quand open / index change
+  // Init (open/index) : reset transform + show controls
   useEffect(() => {
     if (!open) return;
-    resetView();
+    hardResetTransform();
     showControls();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, index]);
 
-  // Resize -> recalcul bounds
+  // Cleanup timer + inertie à la fermeture/démontage
+  useEffect(() => {
+    if (!open) return;
+    return () => {
+      stopInertia();
+      if (hideTimerRef.current) window.clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+      setIsDragging(false);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  // Resize -> recalcul bounds + clamp
   useEffect(() => {
     if (!open) return;
 
@@ -181,7 +193,6 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") goPrev();
       if (e.key === "ArrowRight") goNext();
-      if (e.key === "0") resetView();
     };
 
     window.addEventListener("keydown", onKey);
@@ -210,68 +221,22 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     preload(images[index + 1]);
   }, [open, index, images]);
 
-  // Molette zoom (desktop)
-  const onWheel = (e: React.WheelEvent) => {
-    if (!open) return;
-    e.preventDefault();
-    showControls();
-
-    stopInertia();
-
-    const delta = -e.deltaY;
-    const next = clamp(scaleRef.current + delta * 0.0016, 1, 3);
-
-    // zoom centré sur la souris (effet premium)
-    const el = containerRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const cx = e.clientX - (r.left + r.width / 2);
-    const cy = e.clientY - (r.top + r.height / 2);
-
-    const prevScale = scaleRef.current;
-    const scaleRatio = next / prevScale;
-
-    // Ajuste le pan pour garder le point sous la souris plus stable
-    let tx = txRef.current - cx * (scaleRatio - 1);
-    let ty = tyRef.current - cy * (scaleRatio - 1);
-
-    setVars(next, tx, ty);
-    recalcBounds();
-
-    const clamped = clampToBounds(txRef.current, tyRef.current);
-    setVars(scaleRef.current, clamped.x, clamped.y);
-
-    if (next === 1) resetView();
-  };
-
-  // Double click zoom
-  const onDoubleClick = () => {
-    if (!open) return;
-    showControls();
-
-    stopInertia();
-
-    if (isZoomed()) {
-      resetView();
-      return;
-    }
-
-    setVars(2, 0, 0);
-    recalcBounds();
-  };
-
   // Inertie
   const startInertia = () => {
     stopInertia();
+
+    // Si pas de vitesse, inutile de lancer
+    const { vx, vy } = velocityRef.current;
+    if (Math.hypot(vx, vy) < 0.02) return;
 
     const friction = 0.92; // plus proche de 1 = plus long
     const minSpeed = 0.06;
 
     const step = () => {
-      const { vx, vy } = velocityRef.current;
+      const cur = velocityRef.current;
 
-      const nextVx = vx * friction;
-      const nextVy = vy * friction;
+      const nextVx = cur.vx * friction;
+      const nextVy = cur.vy * friction;
 
       let tx = txRef.current + nextVx * 16; // ~16ms
       let ty = tyRef.current + nextVy * 16;
@@ -295,6 +260,60 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     inertiaRafRef.current = requestAnimationFrame(step);
   };
 
+  // Molette zoom (desktop)
+  const onWheel = (e: React.WheelEvent) => {
+    if (!open) return;
+    e.preventDefault();
+    showControls();
+
+    stopInertia();
+
+    const delta = -e.deltaY;
+    const nextScale = clamp(scaleRef.current + delta * 0.0016, 1, 3);
+
+    const el = containerRef.current;
+    if (!el) return;
+
+    const r = el.getBoundingClientRect();
+    const cx = e.clientX - (r.left + r.width / 2);
+    const cy = e.clientY - (r.top + r.height / 2);
+
+    const prevScale = scaleRef.current;
+    const scaleRatio = nextScale / prevScale;
+
+    let tx = txRef.current - cx * (scaleRatio - 1);
+    let ty = tyRef.current - cy * (scaleRatio - 1);
+
+    setVars(nextScale, tx, ty);
+    recalcBounds();
+
+    const clamped = clampToBounds(txRef.current, tyRef.current);
+    setVars(scaleRef.current, clamped.x, clamped.y);
+
+    // Si on revient à 1, on remet proprement
+    if (nextScale === 1) {
+      setVars(1, 0, 0);
+      recalcBounds();
+    }
+  };
+
+  // Double click zoom
+  const onDoubleClick = () => {
+    if (!open) return;
+    showControls();
+
+    stopInertia();
+
+    if (isZoomed()) {
+      setVars(1, 0, 0);
+      recalcBounds();
+      return;
+    }
+
+    setVars(2, 0, 0);
+    recalcBounds();
+  };
+
   // Mouse drag (desktop)
   const onMouseDown = (e: React.MouseEvent) => {
     showControls();
@@ -302,6 +321,8 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
 
     stopInertia();
     draggingRef.current = true;
+    setIsDragging(true);
+
     lastMoveRef.current = { x: e.clientX, y: e.clientY, t: performance.now() };
     velocityRef.current = { vx: 0, vy: 0 };
   };
@@ -320,13 +341,9 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     const dy = e.clientY - prev.y;
     const dt = Math.max(1, nowT - prev.t);
 
-    // vitesse px/ms
     velocityRef.current = { vx: dx / dt, vy: dy / dt };
 
-    let tx = txRef.current + dx;
-    let ty = tyRef.current + dy;
-
-    const clamped = clampToBounds(tx, ty);
+    const clamped = clampToBounds(txRef.current + dx, tyRef.current + dy);
     setVars(scaleRef.current, clamped.x, clamped.y);
 
     lastMoveRef.current = { x: e.clientX, y: e.clientY, t: nowT };
@@ -335,16 +352,15 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
   const endMouseDrag = () => {
     if (!draggingRef.current) return;
     draggingRef.current = false;
+    setIsDragging(false);
 
-    // inertie uniquement si zoomé
     if (!isZoomed()) return;
     startInertia();
   };
 
-  // Touch (mobile) : pinch + pan + swipe (si pas zoom)
+  // Touch (mobile) : pinch + pan (si zoom)
   const onTouchStart = (e: React.TouchEvent) => {
     showControls();
-
     stopInertia();
 
     if (e.touches.length === 2) {
@@ -357,9 +373,10 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
         d: dist(a, b),
         scale: scaleRef.current,
         center: mid(a, b),
-        tx: txRef.current,
-        ty: tyRef.current,
       };
+
+      // pendant un pinch, on évite de “réutiliser” une ancienne vitesse
+      velocityRef.current = { vx: 0, vy: 0 };
       return;
     }
 
@@ -374,8 +391,9 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
   const onTouchMove = (e: React.TouchEvent) => {
     showControls();
 
+    // Pinch zoom
     if (e.touches.length === 2 && pinchStartRef.current) {
-      e.preventDefault(); // important mobile
+      e.preventDefault();
 
       const a = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       const b = { x: e.touches[1].clientX, y: e.touches[1].clientY };
@@ -384,20 +402,15 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
       const newD = dist(a, b);
       const nextScale = clamp(start.scale * (newD / start.d), 1, 3);
 
-      // centre pinch
       const c = mid(a, b);
 
-      // Ajuste pan pour garder le centre stable (effet premium)
+      // Ajuste pan : garder le centre stable
       const prevScale = scaleRef.current;
       const ratio = nextScale / prevScale;
 
-      const dxCenter = c.x - start.center.x;
-      const dyCenter = c.y - start.center.y;
+      let tx = txRef.current;
+      let ty = tyRef.current;
 
-      let tx = txRef.current + dxCenter;
-      let ty = tyRef.current + dyCenter;
-
-      // compensation zoom autour du centre
       tx = tx - (c.x - window.innerWidth / 2) * (ratio - 1);
       ty = ty - (c.y - window.innerHeight / 2) * (ratio - 1);
 
@@ -407,8 +420,8 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
       const clamped = clampToBounds(txRef.current, tyRef.current);
       setVars(scaleRef.current, clamped.x, clamped.y);
 
-      // update start center pour continuité
-      pinchStartRef.current = { ...start, center: c, d: newD, scale: nextScale, tx: txRef.current, ty: tyRef.current };
+      // update start pour continuité
+      pinchStartRef.current = { ...start, d: newD, scale: nextScale, center: c };
       return;
     }
 
@@ -444,19 +457,14 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
     if (e.touches.length < 2) {
       pinchingRef.current = false;
       pinchStartRef.current = null;
+      // évite inertie “fantôme” après pinch
+      // (la vitesse sera recalculée au prochain pan)
+      velocityRef.current = { vx: 0, vy: 0 };
     }
 
-    // inertie si zoom
     if (isZoomed()) {
       startInertia();
-      return;
     }
-
-    // Swipe navigation si pas zoom
-    // (petit swipe horizontal)
-    if (!lastMoveRef.current) return;
-    // rien de plus ici : ta navigation swipe est déjà gérée dans la lightbox via boutons,
-    // on garde simple pour éviter effets secondaires.
   };
 
   if (!open || !src) return null;
@@ -465,10 +473,6 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
 
   const closeCls =
     "lb-btn lb-btn--pill z-10 lb-btn--close bg-green-300 border border-white/15 text-white hover:bg-black/80";
-  const counterCls =
-    "lb-pill z-10 bg-green-300 border border-white/15 text-white/80";
-  const resetCls =
-    "lb-btn lb-btn--pill z-10 bg-green-300 border border-white text-white/80 hover:bg-black/80";
   const navBtnBase =
     "lb-btn lb-btn--pill z-10 bg-green-300 border border-white/15 text-white hover:bg-green-500";
 
@@ -489,26 +493,12 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
             ✕
           </button>
 
-          {/* COUNTER */}
-          <div className={counterCls}>
-            {index + 1} / {total}
-          </div>
-
-          {/* RESET */}
-          <button onClick={resetView} className={resetCls} aria-label="Reset">
-            Reset
-          </button>
-
           {/* PREV */}
           <button
             onClick={goPrev}
             disabled={!canPrev}
             aria-label="Précédent"
-            className={[
-              "lb-nav lb-nav--left",
-              navBtnBase,
-              canPrev ? "" : "lb-disabled",
-            ].join(" ")}
+            className={["lb-nav lb-nav--left", navBtnBase, canPrev ? "" : "lb-disabled"].join(" ")}
           >
             <span className="lb-arrow">◀︎</span>
           </button>
@@ -518,11 +508,7 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
             onClick={goNext}
             disabled={!canNext}
             aria-label="Suivant"
-            className={[
-              "lb-nav lb-nav--right",
-              navBtnBase,
-              canNext ? "" : "lb-disabled",
-            ].join(" ")}
+            className={["lb-nav lb-nav--right", navBtnBase, canNext ? "" : "lb-disabled"].join(" ")}
           >
             <span className="lb-arrow">▶︎</span>
           </button>
@@ -535,7 +521,7 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
             className={[
               "lb-stage",
               isZoomed()
-                ? draggingRef.current
+                ? isDragging
                   ? "lightbox-cursor-grabbing"
                   : "lightbox-cursor-grab"
                 : "lightbox-cursor-zoom-in",
@@ -549,14 +535,18 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            <img ref={imgRef} src={src} alt={alt} className="lb-image" draggable={false} />
+            <img src={src} alt={alt} className="lb-image" draggable={false} />
           </div>
         </div>
 
         {/* CAPTION */}
         <div className={controlsVisible ? "lb-caption lb-caption--show" : "lb-caption"}>
-          <p className="lb-caption-title">{title} — visuel {index + 1}</p>
-          <p className="lb-caption-hint">Molette/Pinch pour zoom • Double-clic pour zoom • Drag pour déplacer • ESC pour fermer</p>
+          <p className="lb-caption-title">
+            {title} — visuel {index + 1}
+          </p>
+          <p className="lb-caption-hint">
+            Molette/Pinch pour zoom • Double-clic pour zoom • Drag pour déplacer • ESC pour fermer
+          </p>
         </div>
 
         {/* THUMBS */}
@@ -567,10 +557,7 @@ export default function Lightbox({ open, images, index, title, onClose, onChange
               return (
                 <button
                   key={`${thumb}-${i}`}
-                  onClick={() => {
-                    resetView();
-                    onChangeIndex(i);
-                  }}
+                  onClick={() => onChangeIndex(i)}
                   className={active ? "lb-thumb lb-thumb--active" : "lb-thumb"}
                   aria-label={`Aller au visuel ${i + 1}`}
                 >
