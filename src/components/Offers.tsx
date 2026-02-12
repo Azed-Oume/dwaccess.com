@@ -45,7 +45,7 @@ export default function Offers() {
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
 
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
+        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">
           <span className="h-2 w-2 rounded-full bg-indigo-400" />
           Services proposés
         </div>
@@ -77,7 +77,7 @@ export default function Offers() {
             </div>
           ))}
         </div>
-        <div className="mt-6 flex  justify-center">
+        <div className="mt-6 flex  justify-center ">
           <OpenContactButton />
         </div>
       </div>

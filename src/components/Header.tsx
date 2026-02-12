@@ -29,7 +29,7 @@ export default function Header() {
             alt="Logo DWACCESS"
             className="image"
           />
-          <span className="font-semibold tracking-tight">DWACCESS</span>
+          <span className="">DWACCESS</span>
         </Link>
 
         {/* Desktop nav */}
@@ -38,14 +38,14 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-white/80 hover:text-white"
+              className="text-m"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href="/devis"
-            className="rounded-xl bg-white px-4 py-2 text-sm font-medium text-black hover:bg-white/90"
+            className=" text-m"
           >
             Demander un devis
           </Link>
@@ -78,7 +78,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-xl px-3 py-3 text-sm text-white/90 hover:bg-white/10"
+                    className="text-m"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
@@ -86,7 +86,7 @@ export default function Header() {
                 ))}
                 <Link
                   href="/devis"
-                  className="rounded-xl bg-white px-3 py-3 text-sm font-semibold text-black hover:bg-white/90"
+                  className="text-m"
                   onClick={() => setOpen(false)}
                 >
                   Demander un devis

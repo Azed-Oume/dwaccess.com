@@ -9,7 +9,7 @@ export default function CTA() {
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
+        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">
           <span className="h-2 w-2 rounded-full bg-emerald-400" />
           Contact
         </div>
@@ -31,7 +31,7 @@ export default function CTA() {
             <button
             type="button"
             onClick={() => openContact("Demande de devis")}
-            className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
+            className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"
           >
             Nous contacter
           </button>

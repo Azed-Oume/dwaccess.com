@@ -34,14 +34,14 @@ export default function ProjetsClient() {
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
+        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
           <span className="h-2 w-2 rounded-full bg-violet-400" />
           Projets
         </div>
         <div className="flex justify-center">
             <h1 className="mt-6 justify-center text-3xl font-semibold tracking-tight text-white md:text-4xl">Projets</h1>
         </div>
-        <div className=" mt-4 text-base leading-relaxed text-white/70 md:text-lg">
+        <div className=" mt-4  leading-relaxed md:text-lg">
           <p className="flex justify-center text-center">
             Des projets concrets, conçus pour résoudre de vrais besoins : SaaS, outils internes, plateformes métiers et applications web. <br />
             Architecture solide, interfaces modernes, performances optimisées et mises en production réelles.

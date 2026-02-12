@@ -10,15 +10,15 @@ export default function Footer() {
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="font-semibold">{siteConfig.legalName}</p>
-            <p className="mt-1 text-sm text-white/70">
+            <p className="mt-1 text-m">
               {siteConfig.tagline}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
-            <Link href="/services" className="hover:text-white">Services</Link>
-            <Link href="/projets" className="hover:text-white">Projets</Link>
-            <Link href="/mentions-legales" className="hover:text-white">Mentions légales</Link>
+          <div className="flex flex-wrap items-center gap-4 text-m">
+            <Link href="/services" >Services</Link>
+            <Link href="/projets" >Projets</Link>
+            <Link href="/mentions-legales" >Mentions légales</Link>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">

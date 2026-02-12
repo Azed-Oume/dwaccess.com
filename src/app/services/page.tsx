@@ -58,7 +58,7 @@ export default function ServicesPage() {
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
+        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
           <span className="h-2 w-2 rounded-full bg-sky-400" />
           Services
         </div>
@@ -119,13 +119,11 @@ export default function ServicesPage() {
             {/* Boutons */}
             <div className="mt-6 flex w-full flex-col sm:flex-row sm:justify-around gap-4">
 
-              <OpenContactButton 
-                className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90 w-full sm:w-auto"
-              />
+              <OpenContactButton />
 
               <Link
                 href="/projets"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/6 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 w-full sm:w-auto"
+                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"
               >
                 Voir des exemples
               </Link>

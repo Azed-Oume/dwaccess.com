@@ -13,7 +13,7 @@ export default function DevisPage() {
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-6xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs text-white/80">
+        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
           <span className="h-2 w-2 rounded-full bg-sky-400" />
           Devis
         </div>
@@ -40,7 +40,7 @@ export default function DevisPage() {
             <div className="mt-6">
               <a
                 href={`mailto:${siteConfig.email}?subject=Demande%20de%20devis&body=Bonjour%20Azed%2C%0A%0AActivit%C3%A9%20%3A%20...%0AObjectif%20%3A%20...%0APages%20%2F%20fonctionnalit%C3%A9s%20%3A%20...%0AD%C3%A9lai%20%3A%20...%0ABudget%20%3A%20...%0A%0AMerci%20!`}
-                className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90"
+                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"
               >
                 Envoyer une demande de devis
               </a>

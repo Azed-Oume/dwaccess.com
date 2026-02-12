@@ -5,11 +5,19 @@
 @import "./modal/contactModal.css";
 
 :root {
-  --bg: #000000;
+  /* Couleurs principales */
+  --bg: #070a0f;
   --bgdwaccess: rgba(37, 39, 41, 0.92);
-  --fg: #edeff6;
-  --muted: rgba(237, 239, 246, 0.72);
 
+  /* Couleur principale demandée */
+  --logoclair: rgba(62, 140, 191, 1);
+  --logofoncer: rgba(14, 41, 74, 1);
+
+  /* Texte */
+  --fg: #000000;
+  --muted: rgba(0, 0, 0, 0.7);
+
+  /* Cards */
   --card: rgba(255, 255, 255, 0.06);
   --cardHover: rgba(255, 255, 255, 0.08);
 
@@ -19,7 +27,7 @@
   --shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* base */
+/* Base layout */
 html,
 body {
   height: 100%;
@@ -27,22 +35,33 @@ body {
 }
 
 html {
-  background: #070a0f; /* noir profond stable */
+  background: var(--logoclair);
 }
 
+/* 🎯 FOND GLOBAL + TEXTE NOIR */
 body {
-  background: linear-gradient(
-    180deg,
-    rgba(10, 12, 18, 0.96),
-    rgba(7, 10, 15, 0.96)
-  );
+  background: var(--logoclair);
   color: var(--fg);
 }
 
-/* Utilitaires simples (si tu les utilises dans l'UI) */
+/* Typographie globale héritée */
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a {
+  color: inherit;
+}
+
+/* Utilitaires images */
 .image {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 2.5rem;
 }
 
