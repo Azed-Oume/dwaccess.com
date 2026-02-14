@@ -95,9 +95,9 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
-        <div className="mt-6 flex  justify-center">
+        {/* <div className="mt-6 flex  justify-center">
           <OpenContactButton />
-        </div>
+        </div> */}
 
         {/* CTA bas de page */}
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">

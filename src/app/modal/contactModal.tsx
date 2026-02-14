@@ -1,10 +1,10 @@
 // dwaccess-com/src/app/modal/contactModal.tsx
 "use client";
 
-import React, { useEffect, useId, useState } from "react";
-import ContactInfo from "@/components/ContactInfo"; // version propre du bloc info
+import React, { useEffect, useId, useRef, useState } from "react";
 
-type Status = { type: "success" | "danger" | ""; message: string };
+type StatusType = "success" | "danger" | "warning" | "info" | "";
+type Status = { type: StatusType; message: string };
 
 type ContactFormState = {
   title: string;
@@ -45,6 +45,7 @@ const EMPTY_FORM: ContactFormState = {
 
 export default function ContactModal({ show, onHide, title }: ContactModalProps) {
   const formId = useId();
+  const alertRef = useRef<HTMLDivElement | null>(null);
 
   const [status, setStatus] = useState<Status>({ type: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -68,6 +69,14 @@ export default function ContactModal({ show, onHide, title }: ContactModalProps)
     };
   }, [show, onHide]);
 
+  // Focus alert for accessibility when it appears
+  useEffect(() => {
+    if (status.message) {
+      // petite pause pour laisser le DOM peindre
+      window.setTimeout(() => alertRef.current?.focus(), 0);
+    }
+  }, [status.message]);
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -90,17 +99,25 @@ export default function ContactModal({ show, onHide, title }: ContactModalProps)
 
       const data = await readJsonSafe(res);
 
-      if (!res.ok || data?.ok === false) {
-        throw new Error(data?.error || data?.message || `Erreur HTTP ${res.status}`);
+      // Cas OK
+      if (res.ok && data?.ok !== false) {
+        setStatus({
+          type: "success",
+          message: "Merci ! Votre message a bien été envoyé.",
+        });
+
+        setForm(EMPTY_FORM);
+        window.setTimeout(() => onHide?.(), 5000);
+        return;
       }
 
-      setStatus({
-        type: "success",
-        message: "Merci ! Votre message a bien été envoyé.",
-      });
+      // Cas erreur : on différencie 429 (warning)
+      const serverMsg = data?.error || data?.message || `Erreur HTTP ${res.status}`;
 
-      setForm(EMPTY_FORM);
-      window.setTimeout(() => onHide?.(), 5000);
+      setStatus({
+        type: res.status === 429 ? "warning" : "danger",
+        message: serverMsg,
+      });
     } catch (err: any) {
       setStatus({
         type: "danger",
@@ -113,193 +130,199 @@ export default function ContactModal({ show, onHide, title }: ContactModalProps)
 
   if (!show) return null;
 
-  const alertClass =
+  const alertVariant =
     status.type === "success"
-      ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-100"
+      ? "tp-alert--success"
       : status.type === "danger"
-      ? "border-red-400/30 bg-red-400/10 text-red-100"
-      : "border-white/15 bg-white/6 text-white/80";
+      ? "tp-alert--danger"
+      : status.type === "warning"
+      ? "tp-alert--warning"
+      : status.type === "info"
+      ? "tp-alert--info"
+      : "tp-alert--neutral";
+
+  const alertIcon =
+    status.type === "success"
+      ? "✅"
+      : status.type === "danger"
+      ? "⛔"
+      : status.type === "warning"
+      ? "⚠️"
+      : status.type === "info"
+      ? "ℹ️"
+      : "💬";
 
   return (
-    <div className="tp-modal-overlay"
-      aria-modal="true"
-      role="dialog"
-      aria-labelledby={`${formId}-title`}
-    >
+    <div className="tp-modal-overlay" aria-modal="true" role="dialog" aria-labelledby={`${formId}-title`}>
       {/* Overlay */}
       <button
         type="button"
         onClick={onHide}
-        className="absolute inset-0 bg-black/60"
+        className="tp-modal-backdrop"
         aria-label="Fermer"
         disabled={submitting}
       />
 
-      {/* Panel */}
-      <div className="relative w-full max-w-6xl">
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Bloc de gauche : infos de contact */}
-          <ContactInfo />
-
-          {/* Bloc de droite : formulaire */}
-          <div className="tp-modal-card">
-            {/* Header */}
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 mb-5 px-3 py-3 text-xs text-white/80">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                  Contact
-                </div>
-
-                <h1
-                  id={`${formId}-title`}
-                  className="text-2xl font-semibold tracking-tight text-white md:text-3xl"
-                >
-                  {title || "Contact & Devis personnalisé"}
-                </h1>
-
-                <p className="mt-2 text-sm leading-relaxed text-white/70">
-                  Indiquez votre besoin : objectif, pages, fonctionnalités, délai. <br />
-                  Je vous répondrai rapidement avec un plan et une estimation.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={onHide}
-                disabled={submitting}
-                className="tp-btn-close"
-                aria-label="Fermer la fenêtre"
-              >
-                ✕
-              </button>
+      {/* Card */}
+      <div className="tp-modal-card" role="document">
+        {/* Header */}
+        <div className="tp-modal-header">
+          <div>
+            <div className="tp-chip">
+              <span className="tp-chip-dot" />
+              Contact
             </div>
 
-            {/* Alert */}
-            {status.message && (
-              <div
-                className={`mt-5 rounded-2xl border px-4 py-3 text-sm ${alertClass}`}
-                role={status.type === "danger" ? "alert" : "status"}
-              >
-                {status.message}
-              </div>
-            )}
+            <h1 id={`${formId}-title`} className="tp-title">
+              {title || "Contact & Devis personnalisé"}
+            </h1>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} aria-busy={submitting} className="mt-6">
-              {/* Honeypot anti-bot */}
-              <input
-                type="text"
-                name="website"
-                value={form.website}
-                onChange={handleChange}
-                tabIndex={-1}
-                autoComplete="off"
-                className="hidden"
-                aria-hidden="true"
-              />                                
-              <div className="grid gap-4">
-                <div>
-                  <label htmlFor={`${formId}-name`} className="tp-label">
-                    Nom & Prénom *
-                  </label>
-                  <input
-                    id={`${formId}-name`}
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Votre nom complet"
-                    className="tp-input"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor={`${formId}-email`} className="tp-label">
-                    Adresse email *
-                  </label>
-                  <input
-                    id={`${formId}-email`}
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="vous@email.com"
-                    className="tp-input"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor={`${formId}-phone`} className="tp-label">
-                    Téléphone *
-                  </label>
-                  <input
-                    id={`${formId}-phone`}
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    required
-                    placeholder="06 12 34 56 78"
-                    className="tp-input"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor={`${formId}-subject`} className="tp-label">
-                    Sujet *
-                  </label>
-                  <input
-                    id={`${formId}-subject`}
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                    placeholder="Demande de devis — site vitrine"
-                    className="tp-input"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor={`${formId}-message`} className="tp-label">
-                    Votre message *
-                  </label>
-                  <textarea
-                    id={`${formId}-message`}
-                    name="message"
-                    rows={6}
-                    value={form.message}
-                    onChange={handleChange}
-                    required
-                    placeholder="Décrivez votre projet : objectif, pages, délai…"
-                    className="tp-input resize-none"
-                  />
-
-                  <p className="mt-2 text-xs text-white/55">
-                    Exemple : « Site vitrine 4 pages, mise en ligne sous 2 semaines ».
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6 flex items-center justify-between flex-col sm:flex-row gap-3">
-                <p className="text-xs text-white/50">
-                  En envoyant ce formulaire, vous acceptez d’être recontacté.
-                </p>
-
-                <button type="submit" disabled={submitting} className="tp-btn-submit">
-                  {submitting ? (
-                    <>
-                      <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-black/40 border-t-black" />
-                      Envoi en cours…
-                    </>
-                  ) : (
-                    "Envoyer le message"
-                  )}
-                </button>
-              </div>
-            </form>
+            <p className="tp-subtitle">
+              Indiquez votre besoin : objectif, pages, fonctionnalités, délai.
+              <br />
+              Je vous répondrai rapidement avec un plan et une estimation.
+            </p>
           </div>
+
+          <button
+            type="button"
+            onClick={onHide}
+            disabled={submitting}
+            className="tp-btn-close"
+            aria-label="Fermer la fenêtre"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Alert */}
+        {status.message && (
+          <div
+            ref={alertRef}
+            tabIndex={-1}
+            className={`tp-alert ${alertVariant}`}
+            role={status.type === "danger" ? "alert" : "status"}
+            aria-live={status.type === "danger" ? "assertive" : "polite"}
+          >
+            <span className="tp-alert-icon" aria-hidden="true">
+              {alertIcon}
+            </span>
+            <div className="tp-alert-text">{status.message}</div>
+          </div>
+        )}
+
+        {/* Body */}
+        <div className="tp-modal-body">
+          <form onSubmit={handleSubmit} aria-busy={submitting}>
+            {/* Honeypot anti-bot */}
+            <input
+              type="text"
+              name="website"
+              value={form.website}
+              onChange={handleChange}
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
+
+            <div className="tp-grid">
+              <div>
+                <label htmlFor={`${formId}-name`} className="tp-label">
+                  Nom & Prénom *
+                </label>
+                <input
+                  id={`${formId}-name`}
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Votre nom complet"
+                  className="tp-input"
+                />
+              </div>
+
+              <div>
+                <label htmlFor={`${formId}-email`} className="tp-label">
+                  Adresse email *
+                </label>
+                <input
+                  id={`${formId}-email`}
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="vous@email.com"
+                  className="tp-input"
+                />
+              </div>
+
+              <div>
+                <label htmlFor={`${formId}-phone`} className="tp-label">
+                  Téléphone *
+                </label>
+                <input
+                  id={`${formId}-phone`}
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="06 12 34 56 78"
+                  className="tp-input"
+                />
+              </div>
+
+              <div>
+                <label htmlFor={`${formId}-subject`} className="tp-label">
+                  Sujet *
+                </label>
+                <input
+                  id={`${formId}-subject`}
+                  name="subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  required
+                  placeholder="Demande de devis — site vitrine"
+                  className="tp-input"
+                />
+              </div>
+
+              <div>
+                <label htmlFor={`${formId}-message`} className="tp-label">
+                  Votre message *
+                </label>
+                <textarea
+                  id={`${formId}-message`}
+                  name="message"
+                  rows={6}
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  placeholder="Décrivez votre projet : objectif, pages, délai…"
+                  className="tp-input tp-textarea"
+                />
+                <p className="tp-help">Exemple : « Site vitrine 4 pages, mise en ligne sous 2 semaines ».</p>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="tp-modal-footer">
+              <p className="tp-consent">En envoyant ce formulaire, vous acceptez d’être recontacté.</p>
+
+              <button type="submit" disabled={submitting} className="tp-btn-submit">
+                {submitting ? (
+                  <>
+                    <span className="tp-spinner" />
+                    Envoi en cours…
+                  </>
+                ) : (
+                  "Envoyer le message"
+                )}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

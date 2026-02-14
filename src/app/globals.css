@@ -12,6 +12,7 @@
   /* Couleur principale demandée */
   --logoclair: rgba(62, 140, 191, 1);
   --logofoncer: rgba(14, 41, 74, 1);
+  --logofoncer-glass: rgba(14, 41, 74, .78);
 
   /* Texte */
   --fg: #000000;
