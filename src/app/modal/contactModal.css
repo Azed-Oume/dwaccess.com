@@ -28,24 +28,20 @@
   max-height: calc(100dvh - 32px);
   overflow: hidden;
 
+  display: flex;
+  flex-direction: column;
+
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,.10);
 
-  /* IMPORTANT: pas foné plein -> glass */
-  background: linear-gradient(
-    135deg,
-    rgba(14, 41, 74, .90),
-    rgba(8, 25, 50, .85)
-  );
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  background: rgba(14, 41, 74, .95); /* fallback stable */
 
   box-shadow:
     0 20px 60px rgba(0, 0, 0, .55),
     inset 0 1px 0 rgba(255,255,255,.06);
-
 }
-@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .tp-modal-card{
     background: linear-gradient(
       135deg,
@@ -55,6 +51,13 @@
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
   }
+}
+
+.tp-modal-body{
+  padding: 18px 22px 20px 22px;
+  overflow: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Header / Body / Footer layout */
@@ -73,22 +76,25 @@
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-.tp-modal-body{
-  padding: 18px 22px 20px 22px;
-  overflow: auto;
-}
 
 .tp-modal-footer{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
 
-  margin-top: 18px;
+  background: linear-gradient(
+    to top,
+    rgba(14, 41, 74, .95),
+    rgba(14, 41, 74, .65)
+  );
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
   padding-top: 16px;
+  margin-top: 18px;
   border-top: 1px solid rgba(255,255,255,.08);
 }
+
 
 /* Chip */
 .tp-chip{
