@@ -1,3 +1,4 @@
+// src/content/site.ts!
 export const siteConfig = {
   name: "DWACCESS",
   legalName: "Digital Web Access",
@@ -9,7 +10,7 @@ export const siteConfig = {
   whatsapp: "https://wa.me/33768221452",
   linkedin: "https://www.linkedin.com/in/azzedine-oume-developpeur-full-stack/",
   tagline: "Agence de création de sites & applications web",
-  headline: "Sites & applications web rapides, propres et maintenables.",
+  headline: "Une entreprise à taille humaine, proche de ses clients.",
   subheadline:
     "Je vous accompagne du cadrage au déploiement : design, développement, SEO technique et maintenance. Une approche humaine, des délais tenus, du code solide.",
   ogImage: "/og.jpg",

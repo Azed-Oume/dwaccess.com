@@ -5,66 +5,65 @@
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
 import { useContactModal } from "@/app/modal/ContactModalProvider";
+import { hero } from "@/content/hero";
 
 export default function Hero() {
   const { openContact } = useContactModal();
 
   return (
-    <section className="px-4 py-14">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-home">
+      <h1 className="badge-title-hero">
+          Sites & applications web rapides, propres et maintenables.
+      </h1>
+      <article className="mx-auto max-w-6xl">
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
-          <span className="h-2 w-2 rounded-full bg-emerald-400" />
+        <div className="badge-bg">
+          <span className="badge-dot" />
           Disponible pour missions freelance
         </div>
 
         {/* Titre */}
-        <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white ">
+        <h2 className="badge-title">
           {siteConfig.headline}
-        </h1>
-
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+        </h2>
+        <p className="badge-text">
           {siteConfig.subheadline}
         </p>
 
         {/* CTA */}
-        <div className="mt-8 flex justify-center gap-3 sm:flex-row">
+        <nav className="mt-8 flex justify-center gap-3 sm:flex-row">
 
           {/* Bouton qui ouvre la modal */}
           <button
             type="button"
             onClick={() => openContact("Demande de devis")}
-            className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"
+            className="badge-button"
           >
             Nous contacter
           </button>
 
           <Link
             href="/projets"
-            className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"
+            className="badge-button"
           >
             Voir mes projets
           </Link>
-        </div>
+        </nav>
 
         {/* Cartes */}
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {[
-            { title: "Approche", desc: "Cadrage clair, feedback rapide, itérations maîtrisées." },
-            { title: "Qualité", desc: "Code maintenable, performant, SEO technique, sécurité de base." },
-            { title: "Délais", desc: "Planification simple et livraisons régulières." },
-          ].map((x) => (
-            <div
+        <aside className="mt-12 grid gap-4 md:grid-cols-3">
+          {hero.map((x) => (
+            <article
               key={x.title}
-              className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8"
+              className="badge-article"
             >
-              <p className="text-sm font-semibold text-white">{x.title}</p>
-              <p className="mt-2 text-sm text-white/70">{x.desc}</p>
-            </div>
+              <h2 className="badge-article-title">{x.title}</h2>
+              <p className="badge-article-text">{x.desc}</p>
+            </article>
           ))}
-        </div>
-      </div>
+        </aside>
+      </article>
     </section>
   );
 }

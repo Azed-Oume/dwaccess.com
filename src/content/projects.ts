@@ -1,5 +1,4 @@
 // dwaccess-com/src/content/projects.ts
-
 export type ProjectLink = {
   label: string;
   href: string;
@@ -72,7 +71,7 @@ export const projects: Project[] = [
       "SEO avancé",
       "Dashboard admin complet et intuitif"
     ],
-    links: [{ label: "Voir le site", href: "https://vtc-site.vercel.app/" }],
+    links: [{ label: "Visiter le site", href: "https://vtc-site.vercel.app/" }],
   },
   {
     title: "CertiTrans (SaaS)",
@@ -90,6 +89,6 @@ export const projects: Project[] = [
       "Traçabilité des actions",
       "Tableaux de bord personnalisés"
     ],
-    links: [{ label: "Voir le site", href: "https://certitrans.fr" }],    
+    links: [{ label: "Visiter le site", href: "https://certitrans.fr" }],    
   },
 ];

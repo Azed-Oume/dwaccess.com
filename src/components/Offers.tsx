@@ -2,69 +2,35 @@
 "use client";
 
 import OpenContactButton from "@/app/modal/OpenContactButton";
+import { offers } from "@/content/offers";
 
-const offers = [
-  {
-    title: "Site vitrine (pro)",
-    price: "à partir de 900€",
-    bullets: [
-      "1 à 5 pages",
-      "Design premium et responsive",
-      "SEO technique de base",
-      "Performance & accessibilité",
-      "Déploiement + HTTPS",
-    ],
-  },
-  {
-    title: "Application web",
-    price: "à partir de 2 500€",
-    bullets: [
-      "Front React / Next.js",
-      "API Node / Express (si nécessaire)",
-      "Authentification / dashboard / administration",
-      "Base de données (SQL)",
-      "Évolutivité & règles métier",
-    ],
-  },
-  {
-    title: "Maintenance & évolutions",
-    price: "forfait / mensuel",
-    bullets: [
-      "Correctifs & améliorations",
-      "Sécurité & mises à jour",
-      "Optimisations SEO / performance",
-      "Support & suivi",
-      "Roadmap produit",
-    ],
-  },
-];
 
 export default function Offers() {
   
   return (
-    <section className="px-4 py-14">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-home">
+      <article className="mx-auto max-w-6xl">
 
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">
-          <span className="h-2 w-2 rounded-full bg-indigo-400" />
+        <div className="badge-bg">
+          <span className="badge-dot-3" />
           Services proposés
         </div>
 
-        <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+        <h2 className="badge-title">
           Services & prestations
         </h2>
 
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+        <p className="badge-text">
           Des solutions durables, performantes et construites avec soin.
         </p>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <aside className="mt-12 grid gap-4 md:grid-cols-3">
           {offers.map((o) => (
-            <div
+            <article
               key={o.title}
-              className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-              <p className="text-sm font-semibold text-white">{o.title}</p>
-              <p className="mt-2 text-sm text-white/70">{o.price}</p>
+              className="badge-article">
+              <h2 className="badge-article-title">{o.title}</h2>
+              <p className="badge-article-text">{o.price}</p>
 
               <ul className="mt-5 space-y-2 text-sm text-white/70">
                 {o.bullets.map((b) => (
@@ -74,13 +40,13 @@ export default function Offers() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
-        </div>
+        </aside>
         <div className="mt-6 flex  justify-center ">
           <OpenContactButton />
         </div>
-      </div>
+      </article>
     </section>
   );
 }

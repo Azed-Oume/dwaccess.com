@@ -8,6 +8,7 @@
   /* Couleurs principales */
   --bg: #070a0f;
   --bgdwaccess: rgba(37, 39, 41, 0.92);
+  --bgbadge: rgba(193, 199, 201, 0.5);
 
   /* Couleur principale demandée */
   --logoclair: rgba(62, 140, 191, 1);
@@ -44,6 +45,125 @@ body {
   background: var(--logoclair);
   color: var(--fg);
 }
+
+.section-home {
+  padding-left: 1rem;   /* px-4 */
+  padding-right: 1rem;
+  padding-top: 1.5rem;  /* py-14 */
+  padding-bottom: 1.5rem;
+}
+
+.badge-bg {
+  background: var(--bgbadge);
+  border: 2px solid var(--logofoncer);
+  border-radius: 9999px;    /* rounded-full */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;              /* gap-2 */
+  font-weight: 700;         /* font-bold */
+  font-size: 0.875rem;      /* text-sm */
+  padding: 0.5rem 0.75rem; /* py-1 px-3 */
+}
+.badge-dot {
+  height: 1rem;       /* h-2 */
+  width: 1rem;        /* w-2 */
+  border-radius: 9999px;
+  background: #34d399;  /* emerald-400 */
+}
+.badge-dot-2 {
+  height: 1rem;       /* h-2 */
+  width: 1rem;        /* w-2 */
+  border-radius: 9999px;
+  background:rgb(59, 59, 245);
+}
+.badge-dot-3 {
+  height: 1rem;       /* h-2 */
+  width: 1rem;        /* w-2 */
+  border-radius: 9999px;
+  background:rgb(68, 168, 250);
+}
+.badge-dot-4 {
+  height: 1rem;       /* h-2 */
+  width: 1rem;        /* w-2 */
+  border-radius: 9999px;
+  background:rgb(180, 23, 253);
+}
+.badge-dot-5 {
+  height: 1rem;       /* h-2 */
+  width: 1rem;        /* w-2 */
+  border-radius: 9999px;
+  background: yellow;
+}
+.badge-title-hero {       
+  margin: 1.5rem 0 ;  /* mt-6 */
+  text-align: center;
+  font-size: 2.25rem;          /* text-4xl */
+  font-weight: 600;            /* font-semibold */
+  letter-spacing: -0.025em;    /* tracking-tight */
+}
+.badge-title {
+  margin: 1.5rem 0;          /* mt-6 */
+  font-size: 2rem;          /* text-4xl */
+  font-weight: 600;            /* font-semibold */
+  letter-spacing: -0.025em;    /* tracking-tight */
+}
+.badge-text {
+  margin-top: 1rem;            /* mt-4 */
+  max-width: 42rem;            /* max-w-2xl */
+  font-size: 1rem;             /* text-base */
+  line-height: 1.625;          /* leading-relaxed */
+}
+
+/* md:text-lg */
+@media (min-width: 768px) {
+  .badge-text {
+    font-size: 1.125rem;       /* text-lg */
+  }
+}
+.badge-button {
+  display: inline-flex;        /* inline-flex */
+  align-items: center;         /* items-center */
+  justify-content: center;     /* justify-center */
+  padding: 0.75rem 1.5rem;     /* py-3 px-6 */
+  border-radius: 1rem;         /* rounded-2xl */
+  border: 2px solid var(--logofoncer);
+  background: #ffffff;         /* bg-white */
+  color: #000000;              /* text-black */
+  font-size: 1rem;             /* text-m */
+  font-weight: 500;            /* font-medium */
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.badge-button:hover {
+  background: rgba(255, 255, 255, 0.10); /* hover:bg-white/10 */
+}
+.badge-article {
+  padding: 1.5rem;             /* p-6 */
+  border-radius: 1.5rem;       /* rounded-3xl */
+  border: 2px solid var(--logofoncer);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px); /* backdrop-blur-xl */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease-out;
+}
+
+.badge-article:hover {
+  transform: translateY(-4px); /* hover:-translate-y-1 */
+  border-color: rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.08);
+}
+.badge-article-title {
+  font-size: 0.875rem;   /* text-sm */
+  font-weight: 600;      /* font-semibold */
+}
+.badge-article-text {
+  margin-top: 0.5rem;    /* mt-2 */
+  font-size: 0.875rem;   /* text-sm */
+}
+
+
+
 
 /* Typographie globale héritée */
 p,

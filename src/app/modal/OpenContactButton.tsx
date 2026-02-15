@@ -19,7 +19,7 @@ export default function OpenContactButton({
     <button
       type="button"
       onClick={() => openContact(title)}
-      className={className || "inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"}
+      className={className || "badge-button"}
     >
       {children}
     </button>

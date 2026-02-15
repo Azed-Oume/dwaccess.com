@@ -1,57 +1,37 @@
 // src/components/Proofs.tsx
-const items = [
-  {
-    title: "Accompagnement humain",
-    desc: "Vous restez maître du projet. Je vous conseille, j’exécute et je m’adapte en fonction de vos besoins.",
-  },
-  {
-    title: "Stack moderne & solide",
-    desc: "React, Next.js, Node, SQL : une base propre et évolutive.",
-  },
-  {
-    title: "SEO & performance",
-    desc: "Structure, métadonnées, vitesse, accessibilité : un site qui se positionne et charge rapidement.",
-  },
-  {
-    title: "Déploiement & suivi",
-    desc: "Mise en ligne, DNS, SSL, monitoring de base, correctifs et maintenance.",
-  },
-];
+import { proofs } from "@/content/proofs";
 
 export default function Proofs() {
   return (
-    <section className="px-4 py-14">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-home">
+      <article className="mx-auto max-w-6xl">
 
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">
-          <span className="h-2 w-2 rounded-full bg-sky-400" />
+        <div className="badge-bg">
+          <span className="badge-dot-2" />
           Pourquoi travailler avec nous
         </div>
 
-        <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+        <h2 className="badge-title">
           Un accompagnement fiable & professionnel
         </h2>
 
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+        <p className="mt-4 text-lg text-white/70">
           Un site professionnel doit être solide, rapide et évolutif. Voici ce qui fait la différence dans mon approche.
         </p>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {items.map((it) => (
-            <div
-              key={it.title}
-              className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl
-                        shadow-[0_1px_0_rgba(255,255,255,0.06)]
-                        transition-all duration-200 ease-out 
-                        hover:-translate-y-1 hover:border-white/20 hover:bg-white/8"
+        <aside className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {proofs.map((pr) => (
+            <article
+              key={pr.title}
+              className="badge-article"
             >
-              <p className="text-sm font-semibold text-white">{it.title}</p>
-              <p className="mt-2 text-sm text-white/70">{it.desc}</p>
-            </div>
+              <h3 className="badge-article-title">{pr.title}</h3>
+              <p className="badge-article-text">{pr.desc}</p>
+            </article>
           ))}
-        </div>
+        </aside>
 
-      </div>
+      </article>
     </section>
   );
 }
