@@ -26,8 +26,8 @@ export default function CTA() {
           Je vous répondrai avec une approche claire, un plan d’action et une estimation.
         </p>
           <div className="mt-6 flex  justify-center ">
-                    <OpenContactButton />
-                  </div>
+            <OpenContactButton />
+          </div>
           <div className="badge-article mt-4">
             <p className=" text-xl text-bold flex justify-around">
               Réponse rapide et proposition claire.  

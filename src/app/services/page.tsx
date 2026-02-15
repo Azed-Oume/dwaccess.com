@@ -55,34 +55,32 @@ const blocks = [
 
 export default function ServicesPage() {
   return (
-    <section className="px-4 py-14">
+    <section className="section-home">
       <div className="mx-auto max-w-6xl">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
-          <span className="h-2 w-2 rounded-full bg-sky-400" />
+        <div className="badge-bg">
+          <span className="badge-dot-3" />
           Services
         </div>
 
         {/* Titre */}
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+        <h1 className="badge-title">
           Services
         </h1>
-
         {/* Sous-titre */}
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+        <p className="badge-text">
           Du site vitrine au produit SaaS : je construis des bases propres et évolutives,
           avec une approche claire et orientée résultat.
         </p>
-
         {/* Cards */}
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <section className="mt-12 grid gap-4 md:grid-cols-2">
           {blocks.map((b) => (
-            <div
+            <article
               key={b.title}
-              className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8"
+              className="badge-article"
             >
-              <p className="text-sm font-semibold text-white">{b.title}</p>
-              <p className="mt-2 text-sm text-white/70">{b.desc}</p>
+              <h2 className="badge-article-title">{b.title}</h2>
+              <p className="badge-article-text">{b.desc}</p>
 
               <ul className="mt-5 space-y-2 text-sm text-white/70">
                 {b.bullets.map((x) => (
@@ -92,46 +90,31 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
-        </div>
-        {/* <div className="mt-6 flex  justify-center">
-          <OpenContactButton />
-        </div> */}
-
+        </section>
         {/* CTA bas de page */}
-        <div className="mt-8 rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-
-          {/* Conteneur vertical */}
-          <div className="flex flex-col items-center text-center">
-
-            {/* Texte */}
-            <div>
-              <p className="text-xl font-semibold text-white">
+        <section className="badge-article mt-5">
+          <article className="flex flex-col items-center text-center">
+              <h2 className="text-xl font-semibold text-white">
                 Vous souhaitez un devis rapide ?
-              </p>
+              </h2>
               <p className="mt-2 text-xl text-white max-w-xl">
                 Expliquez votre besoin (objectif, pages/fonctionnalités, délai).
                 Je vous répondrai avec une proposition claire.
               </p>
-            </div>
-
             {/* Boutons */}
-            <div className="mt-6 flex w-full flex-col sm:flex-row sm:justify-around gap-4">
-
+            <nav className="mt-8 flex justify-center gap-3 sm:flex-row">
               <OpenContactButton />
-
               <Link
                 href="/projets"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white px-6 py-3 text-m font-medium text-black hover:bg-white/10"
+                className="badge-button"
               >
                 Voir des exemples
               </Link>
-
-            </div>
-          </div>
-        </div>
-
+            </nav>
+          </article>
+        </section>
       </div>
     </section>
   );

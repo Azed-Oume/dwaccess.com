@@ -4,11 +4,10 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
-import { useContactModal } from "@/app/modal/ContactModalProvider";
 import { hero } from "@/content/hero";
+import OpenContactButton from "@/app/modal/OpenContactButton";
 
 export default function Hero() {
-  const { openContact } = useContactModal();
 
   return (
     <section className="section-home">
@@ -33,16 +32,7 @@ export default function Hero() {
 
         {/* CTA */}
         <nav className="mt-8 flex justify-center gap-3 sm:flex-row">
-
-          {/* Bouton qui ouvre la modal */}
-          <button
-            type="button"
-            onClick={() => openContact("Demande de devis")}
-            className="badge-button"
-          >
-            Nous contacter
-          </button>
-
+          <OpenContactButton />
           <Link
             href="/projets"
             className="badge-button"

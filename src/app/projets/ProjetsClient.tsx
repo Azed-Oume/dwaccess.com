@@ -32,35 +32,30 @@ export default function ProjetsClient() {
   };
 
   return (
-    <section className="px-4 py-14">
+    <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
-          <span className="h-2 w-2 rounded-full bg-violet-400" />
+        <div className="badge-bg">
+          <span className="badge-dot-4" />
           Projets
         </div>
-        <div className="flex justify-center">
-            <h1 className="mt-6 justify-center text-3xl font-semibold tracking-tight text-white md:text-4xl">Projets</h1>
-        </div>
-        <div className=" mt-4  leading-relaxed md:text-lg">
-          <p className="flex justify-center text-center">
-            Des projets concrets, conçus pour résoudre de vrais besoins : SaaS, outils internes, plateformes métiers et applications web. <br />
-            Architecture solide, interfaces modernes, performances optimisées et mises en production réelles.
-          </p>
-
-          <div className="mt-4 flex flex-wrap gap-3 justify-center">
+        <h1 className="badge-title">Projets</h1>
+        <p className="badge-text">
+          Des projets concrets, conçus pour résoudre de vrais besoins : SaaS, outils internes, plateformes métiers et applications web. <br />
+          Architecture solide, interfaces modernes, performances optimisées et mises en production réelles.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3 justify-center">
             {["Rigueur", "Simplicité", "Efficacité"].map((x) => (
               <span key={x} className="rounded-full bg-white/80 border border-white/20 px-4 py-2 text-sm font-medium text-black">
                 {x}
               </span>
             ))}
-          </div>
         </div>
 
-        <div className="mt-12 space-y-8">
+        <section className="mt-12 space-y-8">
           {projects.map((p, projectIdx) => (
             <ProjectCard key={p.title} project={p} projectIdx={projectIdx} onOpenImage={openLightbox} />
           ))}
-        </div>
+        </section>
       </div>
 
       <Lightbox

@@ -1,6 +1,7 @@
 // dwaccess-com/src/app/devis/DevisPage.tsx
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/content/site";
 import OpenContactButton from "../modal/OpenContactButton";
 
@@ -11,26 +12,26 @@ export const metadata: Metadata = {
 
 export default function DevisPage() {
   return (
-    <section className="px-4 py-14">
+    <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm ">
-          <span className="h-2 w-2 rounded-full bg-sky-400" />
+        <div className="badge-bg">
+          <span className="badge-dot-6" />
           Devis
         </div>
 
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+        <h1 className="badge-title">
           Demander un devis
         </h1>
 
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+        <p className="badge-text">
           Répondez à 4 questions, et je vous renverrai une estimation ainsi qu’un plan d’action.
         </p>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-            <p className="text-sm font-semibold text-white">Ce dont j’ai besoin pour estimer</p>
+        <section className="mt-12 grid gap-4 md:grid-cols-2">
+          <article className="badge-article">
+            <h2 className="badge-article-title">Ce dont j’ai besoin pour estimer</h2>
 
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+            <ul className="mt-4 list-disc space-y-3 pl-5 text-sm text-white/70">
               <li>Votre activité et votre objectif (vente, crédibilité, prise de RDV…)</li>
               <li>Les pages souhaitées (Accueil, Services, Projets, Contact…)</li>
               <li>Votre deadline (date)</li>
@@ -45,16 +46,23 @@ export default function DevisPage() {
                 Envoyer une demande de devis
               </a>
             </div>
-          </div>
+          </article>
 
-          <div className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8">
-            <p className="text-sm font-semibold text-white">Ou bien : contact classique</p>
+          <article className="badge-article flex flex-col">
+            <h2 className="badge-article-title">
+              Ou bien : contact classique
+            </h2>
+
             <p className="mt-2 text-sm text-white/70">
               Si vous préférez échanger avant, vous pouvez passer par la page Contact.
             </p>
-            <OpenContactButton />
-          </div>
-        </div>
+
+            <div className="mt-auto pt-6">
+              <OpenContactButton />
+            </div>
+          </article>
+
+        </section>
       </div>
     </section>
   );

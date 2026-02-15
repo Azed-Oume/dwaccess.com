@@ -18,7 +18,7 @@ export default function ProjectCard({
   const p = project;
 
   return (
-    <article className="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-white/8 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] hover:ring-1 hover:ring-violet-400/20">
+    <article className="badge-article">
       <div>
         <h2 className="text-lg font-semibold text-white">{p.title}</h2>
         <p className="mt-2 text-sm text-white/70">{p.summary}</p>
