@@ -58,6 +58,34 @@
   --shadow-blue:     0 4px 16px rgba(2, 132, 199, 0.35);
 }
 
+/* ─── Skip link (lien d'évitement RGAA 12.7) ────────────── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 8px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  padding: 8px 18px;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 /* ─── Reset base ─────────────────────────────────────────── */
 html,
 body {

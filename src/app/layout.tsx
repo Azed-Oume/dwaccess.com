@@ -109,10 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning className="min-h-dvh antialiased flex flex-col">
-        <a
-          href="#contenu-principal"
-          className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:rounded focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:outline-none focus:ring-2 focus:ring-white"
-        >
+        <a href="#contenu-principal" className="skip-link">
           Aller au contenu principal
         </a>
         <ClientShell>
