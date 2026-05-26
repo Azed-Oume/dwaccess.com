@@ -45,7 +45,7 @@ export default function ProjetsClient() {
         </p>
         <div className="mt-4 flex flex-wrap gap-3 justify-center">
             {["Rigueur", "Simplicité", "Efficacité"].map((x) => (
-              <span key={x} className="rounded-full bg-white/80 border border-white/20 px-4 py-2 text-sm font-medium text-black">
+              <span key={x} className="badge-bg">
                 {x}
               </span>
             ))}
