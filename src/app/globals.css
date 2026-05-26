@@ -1,35 +1,37 @@
-/* dwaccess-com/src/app/globals.css — Premium Dark (Tailwind v4) */
+/* dwaccess-com/src/app/globals.css — Premium Dark · Charte DWACCESS */
 @import "tailwindcss";
 
-/* Styles de la modale contact (et uniquement ça) */
+/* Styles de la modale contact */
 @import "./modal/contactModal.css";
 
+/* ─── Design tokens ──────────────────────────────────────── */
 :root {
-  /* Couleurs principales */
-  --bg: #070a0f;
-  --bgdwaccess: rgba(37, 39, 41, 0.92);
-  --bgbadge: rgba(193, 199, 201, 0.5);
+  /* Couleurs de marque */
+  --bg:              #070a0f;                    /* fond global quasi-noir          */
+  --surface:         rgba(255, 255, 255, 0.04);  /* surface carte (glass sombre)    */
+  --surface-hover:   rgba(62, 140, 191, 0.08);   /* surface carte au survol          */
 
-  /* Couleur principale demandée */
-  --logoclair: rgba(62, 140, 191, 1);
-  --logofoncer: rgba(14, 41, 74, 1);
-  --logofoncer-glass: rgba(14, 41, 74, .78);
+  --logoclair:       rgba(62, 140, 191, 1);       /* bleu principal #3e8cbf          */
+  --logoclair-glow:  rgba(62, 140, 191, 0.35);    /* lueur bleue pour ombres          */
+  --logofoncer:      rgba(14, 41, 74, 1);         /* navy profond #0e294a            */
 
-  /* Texte */
-  --fg: #ffffff;
-  --muted: rgba(255, 255, 255, 0.7);
+  --border:          rgba(255, 255, 255, 0.09);   /* bordure carte (repos)           */
+  --border-hover:    rgba(62, 140, 191, 0.50);    /* bordure carte (survol)          */
+  --border-badge:    rgba(62, 140, 191, 0.35);    /* bordure chip badge              */
 
-  /* Cards */
-  --card: rgba(255, 255, 255, 0.06);
-  --cardHover: rgba(255, 255, 255, 0.08);
+  --fg:              #ffffff;
+  --fg-muted:        rgba(255, 255, 255, 0.65);
+  --fg-subtle:       rgba(255, 255, 255, 0.40);
 
-  --border: rgba(255, 255, 255, 0.12);
-  --borderHover: rgba(255, 255, 255, 0.18);
+  --bgdwaccess:      rgba(37, 39, 41, 0.92);
+  --bgbadge:         rgba(62, 140, 191, 0.12);    /* fond chip badge                 */
+  --logofoncer-glass:rgba(14, 41, 74, .78);
 
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-card:     0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-hover:    0 12px 32px rgba(0, 0, 0, 0.50), 0 0 0 1px rgba(62, 140, 191, 0.20);
 }
 
-/* Base layout */
+/* ─── Reset base ─────────────────────────────────────────── */
 html,
 body {
   height: 100%;
@@ -40,158 +42,148 @@ html {
   background: var(--bg);
 }
 
-/* 🎯 FOND GLOBAL SOMBRE — contraste WCAG AA */
+/* Fond global sombre — contraste WCAG AA */
 body {
   background: var(--bg);
   color: var(--fg);
 }
 
-.section-home {
-  padding-left: 1rem;   /* px-4 */
-  padding-right: 1rem;
-  padding-top: 1.5rem;  /* py-14 */
-  padding-bottom: 1.5rem;
-}
-
-.badge-bg {
-  background: var(--bgbadge);
-  border: 2px solid var(--logofoncer);
-  border-radius: 9999px;    /* rounded-full */
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;              /* gap-2 */
-  font-weight: 700;         /* font-bold */
-  font-size: 0.875rem;      /* text-sm */
-  padding: 0.5rem 0.75rem; /* py-1 px-3 */
-}
-.badge-dot {
-  height: 1rem;       /* h-2 */
-  width: 1rem;        /* w-2 */
-  border-radius: 9999px;
-  background: #34d399;  /* emerald-400 */
-}
-.badge-dot-2 {
-  height: 1rem;       /* h-2 */
-  width: 1rem;        /* w-2 */
-  border-radius: 9999px;
-  background:rgb(59, 59, 245);
-}
-.badge-dot-3 {
-  height: 1rem;       /* h-2 */
-  width: 1rem;        /* w-2 */
-  border-radius: 9999px;
-  background:rgb(68, 168, 250);
-}
-.badge-dot-4 {
-  height: 1rem;       /* h-2 */
-  width: 1rem;        /* w-2 */
-  border-radius: 9999px;
-  background:rgb(180, 23, 253);
-}
-.badge-dot-5 {
-  height: 1rem;       /* h-2 */
-  width: 1rem;        /* w-2 */
-  border-radius: 9999px;
-  background: yellow;
-}
-.badge-dot-6 {
-  height: 1rem;       /* h-2 */
-  width: 1rem;        /* w-2 */
-  border-radius: 9999px;
-  background: var(--logoclair);
-}
-.badge-title-hero {       
-  margin: 1.5rem 0 ;  /* mt-6 */
-  text-align: center;
-  font-size: 2.25rem;          /* text-4xl */
-  font-weight: 600;            /* font-semibold */
-  letter-spacing: -0.025em;    /* tracking-tight */
-}
-.badge-title {
-  margin: 1.5rem 0;          /* mt-6 */
-  font-size: 2rem;          /* text-4xl */
-  font-weight: 600;            /* font-semibold */
-  letter-spacing: -0.025em;    /* tracking-tight */
-}
-.badge-text {
-  margin-top: 1rem;            /* mt-4 */
-  max-width: 42rem;            /* max-w-2xl */
-  font-size: 1rem;             /* text-base */
-  line-height: 1.625;          /* leading-relaxed */
-}
-
-/* md:text-lg */
-@media (min-width: 768px) {
-  .badge-text {
-    font-size: 1.125rem;       /* text-lg */
-  }
-}
-.badge-button {
-  display: inline-flex;        /* inline-flex */
-  align-items: center;         /* items-center */
-  justify-content: center;     /* justify-center */
-  padding: 0.75rem 1.5rem;     /* py-3 px-6 */
-  border-radius: 1rem;         /* rounded-2xl */
-  border: 2px solid var(--logofoncer);
-  background: #ffffff;         /* bg-white */
-  color: #000000;              /* text-black */
-  font-size: 1rem;             /* text-m */
-  font-weight: 500;            /* font-medium */
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.badge-button:hover {
-  background: rgba(255, 255, 255, 0.10); /* hover:bg-white/10 */
-}
-.badge-article {
-  padding: 1.5rem;
-  border-radius: 1.5rem;
-  border: 2px solid var(--logofoncer);
-  /* effet glass */
-  background: rgba(255, 255, 255, 0.06); /* bg-white/6 */
-  -webkit-backdrop-filter: blur(24px);
-  backdrop-filter: blur(24px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: all 0.3s ease-out;
-}
-
-.badge-article:hover {
-  transform: translateY(-4px);
-  border: 2px solid var(--logofoncer);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  outline: 1px solid rgba(139, 92, 246, 0.20);
-  outline-offset: 0px;
-}
-
-.badge-article-title {
-  font-size: 0.875rem;   /* text-sm */
-  font-weight: 600;      /* font-semibold */
-}
-.badge-article-text {
-  margin-top: 0.5rem;    /* mt-2 */
-  font-size: 0.875rem;   /* text-sm */
-}
-
-
-
-
-/* Typographie globale héritée */
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-a {
+/* Héritage couleur global */
+p, span, h1, h2, h3, h4, h5, h6, li, a {
   color: inherit;
 }
 
-/* Utilitaires images */
+/* ─── Layout sections ────────────────────────────────────── */
+.section-home {
+  padding: 1.5rem 1rem;
+}
+
+/* ─── Chips / Badges ─────────────────────────────────────── */
+.badge-bg {
+  background: var(--bgbadge);
+  border: 1px solid var(--border-badge);
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.8125rem;   /* 13px */
+  padding: 0.375rem 0.875rem;
+  color: rgba(255, 255, 255, 0.90);
+  letter-spacing: 0.01em;
+}
+
+/* Points colorés dans les chips */
+.badge-dot   { height: 0.875rem; width: 0.875rem; border-radius: 9999px; background: #34d399; flex-shrink: 0; }
+.badge-dot-2 { height: 0.875rem; width: 0.875rem; border-radius: 9999px; background: rgb(99, 102, 241); flex-shrink: 0; }
+.badge-dot-3 { height: 0.875rem; width: 0.875rem; border-radius: 9999px; background: var(--logoclair); flex-shrink: 0; }
+.badge-dot-4 { height: 0.875rem; width: 0.875rem; border-radius: 9999px; background: rgb(167, 80, 236); flex-shrink: 0; }
+.badge-dot-5 { height: 0.875rem; width: 0.875rem; border-radius: 9999px; background: #fbbf24; flex-shrink: 0; }
+.badge-dot-6 { height: 0.875rem; width: 0.875rem; border-radius: 9999px; background: var(--logoclair); flex-shrink: 0; }
+
+/* ─── Titres ─────────────────────────────────────────────── */
+.badge-title-hero {
+  margin: 1.5rem 0;
+  text-align: center;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.badge-title {
+  margin: 1.25rem 0;
+  font-size: clamp(1.5rem, 3.5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.badge-text {
+  margin-top: 1rem;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--fg-muted);
+}
+
+@media (min-width: 768px) {
+  .badge-text { font-size: 1.0625rem; }
+}
+
+/* ─── Boutons primaires ──────────────────────────────────── */
+.badge-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.875rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.20);
+  background: #ffffff;
+  color: #0a0a0a;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.badge-button:hover {
+  background: var(--logoclair);
+  color: #ffffff;
+  border-color: var(--logoclair);
+  box-shadow: 0 4px 16px var(--logoclair-glow);
+  transform: translateY(-1px);
+}
+
+.badge-button:active {
+  transform: translateY(0);
+}
+
+/* ─── Cartes / Articles ──────────────────────────────────── */
+.badge-article {
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.badge-article:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-hover);
+}
+
+.badge-article-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.badge-article-text {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+/* ─── Utilitaires images ─────────────────────────────────── */
 .image {
   width: 4rem;
   height: 4rem;
