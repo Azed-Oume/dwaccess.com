@@ -24,7 +24,7 @@ export default function Offers() {
           Des solutions durables, performantes et construites avec soin.
         </p>
 
-        <aside className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
           {offers.map((o) => (
             <article
               key={o.title}
@@ -42,7 +42,7 @@ export default function Offers() {
               </ul>
             </article>
           ))}
-        </aside>
+        </div>
         <div className="mt-6 flex  justify-center ">
           <OpenContactButton />
         </div>

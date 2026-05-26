@@ -20,7 +20,7 @@ export default function CaseStudies() {
           Produits, outils internes, SaaS : du concret, livré proprement.
         </p>
 
-        <aside className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
           {projects.map((p) => (
             <article
               key={p.title}
@@ -43,7 +43,7 @@ export default function CaseStudies() {
               <p className="badge-text mb-4">
                 <span className="font-medium text-white">Point clé :</span> {p.highlight}
               </p>
-                <nav
+                <div
                   className={`mt-auto flex items-end pb-4 ${
                     p.links?.length ? "justify-around" : "justify-center"
                   }`}
@@ -67,11 +67,11 @@ export default function CaseStudies() {
                   <Link href="/projets" className="badge-button">
                     Voir plus
                   </Link>
-                </nav>
+                </div>
 
             </article>
           ))}
-        </aside>
+        </div>
       </article>
     </section>
   );

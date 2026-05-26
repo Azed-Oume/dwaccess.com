@@ -4,8 +4,9 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Mentions légales",
-  description: "Mentions légales du site DWACCESS (Digital Web Access).",
+  title: "Mentions légales — Éditeur & données personnelles",
+  description:
+    "Mentions légales du site DWACCESS (Digital Web Access) : éditeur, hébergement, données personnelles, cookies et propriété intellectuelle.",
 };
 
 export default function MentionsLegalesPage() {

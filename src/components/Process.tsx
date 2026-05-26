@@ -19,7 +19,7 @@ export default function Process() {
           Transparent, clair et structuré : vous savez toujours exactement où nous en sommes.
         </p>
 
-        <aside className="mt-12 grid gap-4 md:grid-cols-4">
+        <div className="mt-12 grid gap-4 md:grid-cols-4">
           {process.map((p) => (
             <article
               key={p.title}
@@ -29,7 +29,7 @@ export default function Process() {
               <p className="badge-article-text">{p.desc}</p>
             </article>
           ))}
-        </aside>
+        </div>
 
       </article>
     </section>

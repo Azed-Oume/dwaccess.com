@@ -6,8 +6,9 @@ import { siteConfig } from "@/content/site";
 import OpenContactButton from "../modal/OpenContactButton";
 
 export const metadata: Metadata = {
-  title: "Demander un devis",
-  description: "Demande de devis : site vitrine, application web, SEO, maintenance.",
+  title: "Devis gratuit — Site vitrine, application web & SEO",
+  description:
+    "Demandez un devis gratuit pour votre site vitrine, application web, optimisation SEO ou maintenance. Réponse sous 24 h avec une proposition claire et chiffrée.",
 };
 
 export default function DevisPage() {

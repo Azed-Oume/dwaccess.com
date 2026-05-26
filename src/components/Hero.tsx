@@ -31,7 +31,7 @@ export default function Hero() {
         </p>
 
         {/* CTA */}
-        <nav className="mt-8 flex justify-center gap-3 sm:flex-row">
+        <div className="mt-8 flex justify-center gap-3 sm:flex-row">
           <OpenContactButton />
           <Link
             href="/projets"
@@ -39,10 +39,10 @@ export default function Hero() {
           >
             Voir mes projets
           </Link>
-        </nav>
+        </div>
 
         {/* Cartes */}
-        <aside className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
           {hero.map((x) => (
             <article
               key={x.title}
@@ -52,7 +52,7 @@ export default function Hero() {
               <p className="badge-article-text">{x.desc}</p>
             </article>
           ))}
-        </aside>
+        </div>
       </article>
     </section>
   );

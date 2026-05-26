@@ -19,7 +19,7 @@ export default function Proofs() {
           Un site professionnel doit être solide, rapide et évolutif. Voici ce qui fait la différence dans mon approche.
         </p>
 
-        <aside className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {proofs.map((pr) => (
             <article
               key={pr.title}
@@ -29,7 +29,7 @@ export default function Proofs() {
               <p className="badge-article-text">{pr.desc}</p>
             </article>
           ))}
-        </aside>
+        </div>
 
       </article>
     </section>

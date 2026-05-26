@@ -5,9 +5,9 @@ import Link from "next/link";
 import OpenContactButton from "../modal/OpenContactButton";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Services web — Site vitrine, application & SEO",
   description:
-    "Création de sites vitrines, développement d’applications web, SEO technique, déploiement et maintenance.",
+    "Création de sites vitrines professionnels, développement d’applications web sur mesure, optimisation SEO technique et déploiement. Devis gratuit sous 24 h.",
 };
 
 const blocks = [
@@ -104,7 +104,7 @@ export default function ServicesPage() {
                 Je vous répondrai avec une proposition claire.
               </p>
             {/* Boutons */}
-            <nav className="mt-8 flex justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex justify-center gap-3 sm:flex-row">
               <OpenContactButton />
               <Link
                 href="/projets"
@@ -112,7 +112,7 @@ export default function ServicesPage() {
               >
                 Voir des exemples
               </Link>
-            </nav>
+            </div>
           </article>
         </section>
       </div>
