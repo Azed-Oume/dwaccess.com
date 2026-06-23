@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
 import OpenContactButton from "../modal/OpenContactButton";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Devis gratuit — Site vitrine, application web & SEO",
@@ -15,9 +16,12 @@ export default function DevisPage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        <div className="badge-bg">
-          <span className="badge-dot-6" />
-          Devis
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-6" />
+            Devis
+          </div>
+          <BackButton />
         </div>
 
         <h1 className="badge-title">

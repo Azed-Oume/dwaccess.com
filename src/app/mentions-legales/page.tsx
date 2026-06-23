@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Mentions légales — Éditeur & données personnelles",
@@ -13,10 +14,13 @@ export default function MentionsLegalesPage() {
   return (
     <section className="px-4 py-14">
       <div className="mx-auto max-w-3xl">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">
-          <span className="h-2 w-2 rounded-full bg-zinc-300" />
-          Légal
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="inline-flex items-center gap-2 font-bold rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">
+            <span className="h-2 w-2 rounded-full bg-zinc-300" />
+            Légal
+          </div>
+          <BackButton />
         </div>
 
         <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-4xl">

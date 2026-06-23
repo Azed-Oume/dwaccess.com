@@ -6,6 +6,7 @@ import React, { useMemo, useState } from "react";
 import { projects } from "@/content/projects";
 import ProjectCard from "./components/ProjectCard";
 import Lightbox from "./components/Lightbox";
+import BackButton from "@/components/BackButton";
 
 export default function ProjetsClient() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -34,9 +35,12 @@ export default function ProjetsClient() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        <div className="badge-bg">
-          <span className="badge-dot-4" />
-          Projets
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-4" />
+            Projets
+          </div>
+          <BackButton />
         </div>
         <h1 className="badge-title">Projets</h1>
         <p className="badge-text">

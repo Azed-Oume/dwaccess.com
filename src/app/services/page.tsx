@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "../modal/OpenContactButton";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Services web — Site vitrine, application & SEO",
@@ -61,10 +62,13 @@ export default function ServicesPage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        {/* Badge */}
-        <div className="badge-bg">
-          <span className="badge-dot-3" />
-          Services
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-3" />
+            Services
+          </div>
+          <BackButton />
         </div>
 
         {/* Titre */}
