@@ -74,3 +74,8 @@ export default function MentionsLegalesPage() {
               Le contenu de ce site (textes, visuels, code) est protégé. Toute reproduction non autorisée est interdite.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}

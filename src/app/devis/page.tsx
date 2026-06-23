@@ -15,12 +15,9 @@ export default function DevisPage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between mb-6">
-          <div className="badge-bg">
-            <span className="badge-dot-6" />
-            Devis
-          </div>
-          <BackButton />
+        <div className="badge-bg">
+          <span className="badge-dot-6" />
+          Devis
         </div>
 
         <h1 className="badge-title">
@@ -61,4 +58,12 @@ export default function DevisPage() {
               Si vous préférez échanger avant, vous pouvez passer par la page Contact.
             </p>
 
-            <div 
+            <div className="mt-auto pt-6">
+              <OpenContactButton />
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+  );
+}

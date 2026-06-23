@@ -34,12 +34,9 @@ export default function ProjetsClient() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between mb-6">
-          <div className="badge-bg">
-            <span className="badge-dot-4" />
-            Projets
-          </div>
-          <BackButton />
+        <div className="badge-bg">
+          <span className="badge-dot-4" />
+          Projets
         </div>
         <h1 className="badge-title">Projets</h1>
         <p className="badge-text">
@@ -63,4 +60,7 @@ export default function ProjetsClient() {
 
       <Lightbox
         open={lightboxOpen}
-        images={imag
+        images={images} currentIndex={activeImageIndex} onClose={closeLightbox} onChange={changeIndex} title={title} />
+    </section>
+  );
+}

@@ -123,4 +123,12 @@ export default function DeveloppementApplicationWebPage() {
             Décrivez votre besoin — fonctionnalités clés, utilisateurs, contraintes. Je vous réponds avec une approche et une estimation sous 24 h.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
-            <OpenContactButton
+            <OpenContactButton />
+            <Link href="/services" className="badge-button">Voir tous les services</Link>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  );
+}

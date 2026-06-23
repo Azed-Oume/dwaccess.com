@@ -133,4 +133,12 @@ export default function SeoTechniquePage() {
             Partagez l'URL de votre site — je regarde et vous dis ce qui bloque votre référencement.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
-            <OpenContactButton 
+            <OpenContactButton />
+            <Link href="/services" className="badge-button">Voir tous les services</Link>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  );
+}

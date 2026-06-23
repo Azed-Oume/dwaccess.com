@@ -112,4 +112,19 @@ export default function ServicesPage() {
             <h2 className="text-xl font-semibold text-white">
               Vous souhaitez un devis rapide ?
             </h2>
-            <p className="mt-2 text-xl text-white max-w-x
+            <p className="mt-2 text-xl text-white max-w-xl">
+              Expliquez votre besoin (objectif, pages/fonctionnalités, délai).
+              Je vous répondrai avec une proposition claire.
+            </p>
+            <div className="mt-8 flex justify-center gap-3 sm:flex-row">
+              <OpenContactButton />
+              <Link href="/projets" className="badge-button">
+                Voir des exemples
+              </Link>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+  );
+}

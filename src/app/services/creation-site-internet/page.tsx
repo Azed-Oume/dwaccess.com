@@ -161,4 +161,12 @@ export default function CreationSiteInternetPage() {
             Décrivez votre activité et vos besoins — je vous réponds avec une estimation claire sous 24 h.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
-            <OpenContactButton 
+            <OpenContactButton />
+            <Link href="/services" className="badge-button">Voir tous les services</Link>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  );
+}
