@@ -41,6 +41,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   allowedDevOrigins: [
     "localhost",
     "192.168.1.105",

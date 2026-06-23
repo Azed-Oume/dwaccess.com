@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // ─── Configuration ─────────────────────────────────────────────────────────────
 const SSH      = "helpme";                        // alias SSH dans ~/.ssh/config
-const REMOTE   = "/var/www/dwaccess.com";         // chemin sur le VPS
+const REMOTE   = "/var/www/dwaccess";             // chemin sur le VPS
 const PM2_APP  = "DwaccessWeb";                   // nom du process PM2
 const BRANCH   = "main";
 // ───────────────────────────────────────────────────────────────────────────────
@@ -118,8 +118,8 @@ ssh(`pm2 show ${PM2_APP} | grep -E 'status|uptime|restarts'`);
 
 // ─── Résumé ────────────────────────────────────────────────────────────────────
 console.log(`\n${C.bold}${C.green}════════════════════════════════════${C.reset}`);
-console.log(`${C.bold}${C.green}  ✓ dwaccess.com déployé avec succès  ${C.reset}`);
+console.log(`${C.bold}${C.green}  ✓ dwaccess.fr déployé avec succès   ${C.reset}`);
 console.log(`${C.bold}${C.green}════════════════════════════════════${C.reset}\n`);
-console.log(`  ${C.cyan}https://dwaccess.com${C.reset}\n`);
+console.log(`  ${C.cyan}https://dwaccess.fr${C.reset}\n`);
 
 if (dryRun) warn("Mode --dry-run : aucune commande n'a été exécutée réellement.");
