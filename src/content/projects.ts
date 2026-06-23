@@ -73,22 +73,22 @@ export const projects: Project[] = [
     ],
     links: [{ label: "Visiter le site", href: "https://vtc-site.vercel.app/" }],
   },
-  // {
-  //   title: "CertiTrans (SaaS)",
-  //   summary:
-  //     "Plateforme de gestion et de traçabilité (RH, flotte, suivi terrain) pensée pour la conformité et la fiabilité des données.",
-  //   stack: ["React", "Node.js", "Express", "Sequelize", "PostgreSQL / MySQL", "PM2", "Apache"],
-  //   highlight: "Conçu en mode MVP → itérations rapides → industrialisation progressive.",
-  //   images: [
-  //     "/images/certitrans-1.png",
-  //     "/images/certitrans-2.png"
-  //   ],
-  //   option: [
-  //     "Gestion des utilisateurs",
-  //     "Suivi de flotte",
-  //     "Traçabilité des actions",
-  //     "Tableaux de bord personnalisés"
-  //   ],
-  //   links: [{ label: "Visiter le site", href: "https://certitrans.fr" }],    
-  // },
+  {
+    title: "Plateforme SaaS de gestion métier",
+    summary:
+      "Plateforme complète de gestion opérationnelle : RH, suivi de flotte, traçabilité terrain et conformité des données. Conçue pour monter en charge sur un périmètre multi-utilisateurs.",
+    stack: ["React", "Node.js", "Express", "Sequelize", "PostgreSQL", "PM2", "Apache"],
+    highlight: "Approche MVP → itérations rapides → industrialisation progressive. Architecture pensée pour la scalabilité.",
+    images: [
+      "/images/certitrans-1.png",
+      "/images/certitrans-2.png"
+    ],
+    option: [
+      "Gestion des utilisateurs & rôles",
+      "Suivi de flotte en temps réel",
+      "Traçabilité des actions",
+      "Tableaux de bord personnalisés",
+      "Architecture multi-clients"
+    ],
+  },
 ];
