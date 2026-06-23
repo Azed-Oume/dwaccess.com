@@ -59,12 +59,13 @@ export default function SeoTechniquePage() {
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
 
-        <BackButton />
-
-        {/* Badge */}
-        <div className="badge-bg">
-          <span className="badge-dot-3" />
-          SEO technique
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-3" />
+            SEO technique
+          </div>
+          <BackButton />
         </div>
 
         {/* H1 */}

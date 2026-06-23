@@ -59,12 +59,13 @@ export default function CreationSiteInternetPage() {
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
 
-        <BackButton />
-
-        {/* Badge */}
-        <div className="badge-bg">
-          <span className="badge-dot-2" />
-          Création de site internet
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-2" />
+            Création de site internet
+          </div>
+          <BackButton />
         </div>
 
         {/* H1 */}

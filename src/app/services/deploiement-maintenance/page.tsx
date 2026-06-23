@@ -53,12 +53,13 @@ export default function DeploiementMaintenancePage() {
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
 
-        <BackButton />
-
-        {/* Badge */}
-        <div className="badge-bg">
-          <span className="badge-dot-5" />
-          Déploiement & maintenance
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-5" />
+            Déploiement & maintenance
+          </div>
+          <BackButton />
         </div>
 
         {/* H1 */}

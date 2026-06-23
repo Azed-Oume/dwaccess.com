@@ -45,12 +45,13 @@ export default function DeveloppementApplicationWebPage() {
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
 
-        <BackButton />
-
-        {/* Badge */}
-        <div className="badge-bg">
-          <span className="badge-dot-2" />
-          Application web
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="badge-bg">
+            <span className="badge-dot-2" />
+            Application web
+          </div>
+          <BackButton />
         </div>
 
         {/* H1 */}
