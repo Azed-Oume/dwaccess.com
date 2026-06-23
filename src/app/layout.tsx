@@ -98,6 +98,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 
+  // ✅ Google Search Console
+  verification: {
+    google: "GuWuxa30gLJ5oWi0sH2Fdrgg6inL5OFBEzw8sr0S_8I",
+  },
+
   // ✅ PWA
   manifest: "/manifest.webmanifest",
   applicationName: "DWACCESS",
