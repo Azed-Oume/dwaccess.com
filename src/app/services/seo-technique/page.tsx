@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "@/app/modal/OpenContactButton";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "SEO technique — Audit & optimisation référencement naturel",
@@ -57,6 +58,8 @@ export default function SeoTechniquePage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
+
+        <BackButton />
 
         {/* Badge */}
         <div className="badge-bg">

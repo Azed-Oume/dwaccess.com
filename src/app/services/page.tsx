@@ -47,7 +47,7 @@ const blocks = [
   {
     title: "Déploiement & maintenance",
     desc: "Mise en ligne propre, suivi, correctifs et évolutions.",
-    href: null,
+    href: "/services/deploiement-maintenance",
     bullets: [
       "Vercel / VPS / DNS",
       "SSL, redirections",

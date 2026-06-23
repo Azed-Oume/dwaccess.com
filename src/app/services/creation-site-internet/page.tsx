@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "@/app/modal/OpenContactButton";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Création de site internet à Argenteuil — Développeur web",
@@ -57,6 +58,8 @@ export default function CreationSiteInternetPage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
+
+        <BackButton />
 
         {/* Badge */}
         <div className="badge-bg">
