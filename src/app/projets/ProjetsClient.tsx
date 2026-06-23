@@ -60,7 +60,7 @@ export default function ProjetsClient() {
 
       <Lightbox
         open={lightboxOpen}
-        index={activeImageIndex} onClose={closeLightbox} onChangeIndex={changeIndex} title={title} />
+        images={images} index={activeImageIndex} onClose={closeLightbox} onChangeIndex={changeIndex} title={title} />
     </section>
   );
 }
