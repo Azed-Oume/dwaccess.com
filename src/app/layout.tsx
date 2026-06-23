@@ -101,6 +101,9 @@ export const metadata: Metadata = {
   // ✅ Google Search Console
   verification: {
     google: "GuWuxa30gLJ5oWi0sH2Fdrgg6inL5OFBEzw8sr0S_8I",
+    other: {
+      "msvalidate.01": "FFEEF25EA232A65733B882A28BD5D02C",
+    },
   },
 
   // ✅ PWA
