@@ -62,7 +62,6 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.legalName}. Tous droits réservés.
           </p>
-          <p className="text-white/50">Next.js + Tailwind.</p>
         </div>
       </div>
     </footer>
