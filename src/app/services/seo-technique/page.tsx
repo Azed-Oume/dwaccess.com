@@ -3,7 +3,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "@/app/modal/OpenContactButton";
-import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "SEO technique — Audit & optimisation référencement naturel",
@@ -58,14 +57,9 @@ export default function SeoTechniquePage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-
-        {/* Top row */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="badge-bg">
-            <span className="badge-dot-3" />
-            SEO technique
-          </div>
-          <BackButton />
+        <div className="badge-bg">
+          <span className="badge-dot-3" />
+          SEO technique
         </div>
 
         {/* H1 */}
@@ -139,12 +133,4 @@ export default function SeoTechniquePage() {
             Partagez l'URL de votre site — je regarde et vous dis ce qui bloque votre référencement.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
-            <OpenContactButton />
-            <Link href="/services" className="badge-button">Voir tous les services</Link>
-          </div>
-        </article>
-
-      </div>
-    </section>
-  );
-}
+            <OpenContactButton 

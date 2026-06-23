@@ -3,7 +3,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "@/app/modal/OpenContactButton";
-import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Développement application web sur mesure — React & Node.js",
@@ -44,14 +43,9 @@ export default function DeveloppementApplicationWebPage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-
-        {/* Top row */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="badge-bg">
-            <span className="badge-dot-2" />
-            Application web
-          </div>
-          <BackButton />
+        <div className="badge-bg">
+          <span className="badge-dot-2" />
+          Application web
         </div>
 
         {/* H1 */}
@@ -129,12 +123,4 @@ export default function DeveloppementApplicationWebPage() {
             Décrivez votre besoin — fonctionnalités clés, utilisateurs, contraintes. Je vous réponds avec une approche et une estimation sous 24 h.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
-            <OpenContactButton />
-            <Link href="/projets" className="badge-button">Voir des réalisations</Link>
-          </div>
-        </article>
-
-      </div>
-    </section>
-  );
-}
+            <OpenContactButton

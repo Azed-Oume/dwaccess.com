@@ -3,7 +3,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "@/app/modal/OpenContactButton";
-import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Déploiement & maintenance — Mise en ligne, VPS, SSL et suivi",
@@ -52,14 +51,9 @@ export default function DeploiementMaintenancePage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-
-        {/* Top row */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="badge-bg">
-            <span className="badge-dot-5" />
-            Déploiement & maintenance
-          </div>
-          <BackButton />
+        <div className="badge-bg">
+          <span className="badge-dot-5" />
+          Déploiement & maintenance
         </div>
 
         {/* H1 */}

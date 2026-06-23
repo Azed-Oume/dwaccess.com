@@ -3,7 +3,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OpenContactButton from "@/app/modal/OpenContactButton";
-import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Création de site internet à Argenteuil — Développeur web",
@@ -58,14 +57,9 @@ export default function CreationSiteInternetPage() {
   return (
     <section className="section-home">
       <div className="mx-auto max-w-6xl">
-
-        {/* Top row */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="badge-bg">
-            <span className="badge-dot-2" />
-            Création de site internet
-          </div>
-          <BackButton />
+        <div className="badge-bg">
+          <span className="badge-dot-2" />
+          Création de site internet
         </div>
 
         {/* H1 */}
@@ -167,12 +161,4 @@ export default function CreationSiteInternetPage() {
             Décrivez votre activité et vos besoins — je vous réponds avec une estimation claire sous 24 h.
           </p>
           <div className="mt-6 flex justify-center gap-3 flex-wrap">
-            <OpenContactButton />
-            <Link href="/services" className="badge-button">Voir tous les services</Link>
-          </div>
-        </article>
-
-      </div>
-    </section>
-  );
-}
+            <OpenContactButton 

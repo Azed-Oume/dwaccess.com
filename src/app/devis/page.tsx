@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
 import OpenContactButton from "../modal/OpenContactButton";
-import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Devis gratuit — Site vitrine, application web & SEO",
@@ -62,13 +61,4 @@ export default function DevisPage() {
               Si vous préférez échanger avant, vous pouvez passer par la page Contact.
             </p>
 
-            <div className="mt-auto pt-6">
-              <OpenContactButton />
-            </div>
-          </article>
-
-        </section>
-      </div>
-    </section>
-  );
-}
+            <div 

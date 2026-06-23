@@ -6,7 +6,6 @@ import React, { useMemo, useState } from "react";
 import { projects } from "@/content/projects";
 import ProjectCard from "./components/ProjectCard";
 import Lightbox from "./components/Lightbox";
-import BackButton from "@/components/BackButton";
 
 export default function ProjetsClient() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -64,12 +63,4 @@ export default function ProjetsClient() {
 
       <Lightbox
         open={lightboxOpen}
-        images={images}
-        index={activeImageIndex}
-        title={title}
-        onClose={closeLightbox}
-        onChangeIndex={changeIndex}
-      />
-    </section>
-  );
-}
+        images={imag
