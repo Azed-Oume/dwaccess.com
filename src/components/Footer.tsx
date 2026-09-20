@@ -50,7 +50,7 @@ export default function Footer() {
                 <img
                   src="/logo/twitter.png"
                   alt="Logo X"
-                  className="image-logo"
+                  className="image-logo brightness-0 invert"
                 />
                 <span className="hidden sm:inline">X</span>
               </a>
