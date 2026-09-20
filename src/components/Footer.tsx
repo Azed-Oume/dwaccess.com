@@ -22,9 +22,9 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
-            {siteConfig.linkedin ? (
+            {siteConfig.linkedinCompany ? (
               <a
-                href={siteConfig.linkedin}
+                href={siteConfig.linkedinCompany}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
@@ -36,6 +36,23 @@ export default function Footer() {
                   className="image-logo"
                 />
                 <span className="hidden sm:inline">LinkedIn</span>
+              </a>
+            ) : null}
+
+            {siteConfig.x ? (
+              <a
+                href={siteConfig.x}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+                aria-label="X"
+              >
+                <img
+                  src="/logo/twitter.png"
+                  alt="Logo X"
+                  className="image-logo"
+                />
+                <span className="hidden sm:inline">X</span>
               </a>
             ) : null}
 

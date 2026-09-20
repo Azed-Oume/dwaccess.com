@@ -25,7 +25,7 @@ const jsonLd = {
         contactType: "customer service",
         availableLanguage: "fr",
       },
-      sameAs: [siteConfig.linkedin],
+      sameAs: [siteConfig.linkedinCompany, siteConfig.x, siteConfig.linkedin],
       address: {
         "@type": "PostalAddress",
         addressLocality: "Argenteuil",
@@ -79,7 +79,7 @@ const jsonLd = {
         "SEO technique",
         "PWA",
       ],
-      sameAs: [siteConfig.linkedin],
+      sameAs: [siteConfig.linkedinCompany, siteConfig.x, siteConfig.linkedin],
     },
     {
       "@type": "WebSite",
