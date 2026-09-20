@@ -17,6 +17,24 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "AideNMe (Application d'entraide / PWA + Android)",
+    summary:
+      "Application gratuite d'entraide entre voisins : alerte SOS géolocalisée, carte des proches, missions d'entraide, messagerie en temps réel et appels audio/vidéo. Disponible en PWA et en application Android.",
+    stack: ["React", "Node.js", "Express", "MySQL", "Socket.IO", "Capacitor"],
+    highlight: "Temps réel (SOS, messagerie, appels WebRTC), géolocalisation et application Android native.",
+    images: [
+      "/images/aidenme-1.jpg",
+      "/images/aidenme-2.jpg"
+    ],
+    option: [
+      "Alerte SOS géolocalisée",
+      "Messagerie et appels audio/vidéo",
+      "Missions d'entraide",
+      "PWA installable + Android"
+    ],
+    links: [{ label: "Visiter le site", href: "https://aidenme.fr" }],
+  },
+  {
     title: "Taxi Premium (Plateforme SaaS / PWA)",
     summary:
       "Plateforme complète de réservation et de gestion Taxi : parcours client, OTP, back-office, base de données et règles métier. Application installable sur smartphone (PWA).",
