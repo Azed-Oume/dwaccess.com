@@ -19,6 +19,9 @@ export default function Footer() {
             <Link href="/services" >Services</Link>
             <Link href="/projets" >Projets</Link>
             <Link href="/mentions-legales" >Mentions légales</Link>
+            <a href="https://aidenme.fr" target="_blank" rel="noreferrer">
+              AideNMe
+            </a>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
