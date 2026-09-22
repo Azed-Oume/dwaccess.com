@@ -17,3 +17,11 @@ export const siteConfig = {
     "Je vous accompagne du cadrage au déploiement : design, développement, SEO technique et maintenance. Une approche humaine, des délais tenus, du code solide.",
   ogImage: "/og.jpg",
 };
+
+// Applications DWA — liste commune affichée dans le footer de tous les sites.
+// Ajouter une entrée ici à chaque nouvelle application mise en ligne.
+export const apps = [
+  { name: "AideNMe", url: "https://aidenme.fr" },
+  { name: "GESTITRANS", url: "https://dwa-gestitrans.fr" },
+  { name: "MediTransport", url: "https://meditransport.dwaccess.fr" },
+];

@@ -1,7 +1,7 @@
 // dwaccess-com/src/components/Footer.tsx
 
 import Link from "next/link";
-import { siteConfig } from "@/content/site";
+import { siteConfig, apps } from "@/content/site";
 
 export default function Footer() {
   return (
@@ -19,9 +19,6 @@ export default function Footer() {
             <Link href="/services" >Services</Link>
             <Link href="/projets" >Projets</Link>
             <Link href="/mentions-legales" >Mentions légales</Link>
-            <a href="https://aidenme.fr" target="_blank" rel="noreferrer">
-              AideNMe
-            </a>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
@@ -78,7 +75,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
+        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-white/70">
+            Nos applications :{" "}
+            {apps.map((app, i) => (
+              <span key={app.url}>
+                <a href={app.url} target="_blank" rel="noreferrer" className="hover:text-white">
+                  {app.name}
+                </a>
+                {i < apps.length - 1 ? " · " : ""}
+              </span>
+            ))}
+          </p>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.legalName}. Tous droits réservés.
           </p>
