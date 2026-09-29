@@ -4,6 +4,13 @@ export type ProjectLink = {
   href: string;
 };
 
+export type ProjectVideo = {
+  id: string; // ancre utilisée par le lien « Voir la vidéo » de l'accueil
+  src: string;
+  poster: string;
+  caption?: string;
+};
+
 export type Project = {
   title: string;
   summary: string;
@@ -12,6 +19,7 @@ export type Project = {
   images: string[];
   option?: string[];
   links?: ProjectLink[];
+  video?: ProjectVideo;
   layout?: "two-images" | "three-images"; // pour décider du rendu
 };
 
@@ -33,6 +41,12 @@ export const projects: Project[] = [
       "PWA installable + Android"
     ],
     links: [{ label: "Visiter le site", href: "https://aidenme.fr" }],
+    video: {
+      id: "video-aidenme",
+      src: "/videos/aidenme-presentation.mp4",
+      poster: "/videos/aidenme-presentation-poster.jpg",
+      caption: "Présentation d'AideNMe en 40 secondes",
+    },
   },
   {
     title: "Taxi Premium (Plateforme SaaS / PWA)",

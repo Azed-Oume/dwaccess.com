@@ -52,6 +52,27 @@ export default function ProjectCard({
         ) : null}
       </div>
 
+      {p.video ? (
+        <figure id={p.video.id} className="mx-auto mt-6 w-full max-w-xs scroll-mt-28">
+          <video
+            controls
+            playsInline
+            preload="none"
+            poster={p.video.poster}
+            className="aspect-[9/16] w-full rounded-2xl border border-white/10 bg-black object-cover"
+          >
+            <source src={p.video.src} type="video/mp4" />
+            Votre navigateur ne peut pas lire cette vidéo.{" "}
+            <a href={p.video.src} className="underline">
+              Télécharger la vidéo
+            </a>
+          </video>
+          {p.video.caption ? (
+            <figcaption className="mt-2 text-center text-xs text-white/70">{p.video.caption}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
+
       {p.images?.length ? (
         <div
           className={`mt-6 grid gap-3 ${p.images.length === 1 ? "grid-cols-1" : ""} ${p.images.length === 2 ? "grid-cols-2" : ""} ${p.images.length === 3 ? "grid-cols-1 sm:grid-cols-3" : ""} ${p.images.length >= 4 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" : ""} ${p.images.length >= 5 ? "lg:grid-cols-5" : ""}`}

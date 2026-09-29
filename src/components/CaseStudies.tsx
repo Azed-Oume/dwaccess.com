@@ -43,6 +43,15 @@ export default function CaseStudies() {
               <p className="badge-text mb-4">
                 <span className="font-medium text-white">Point clé :</span> {p.highlight}
               </p>
+
+              {p.video ? (
+                <Link
+                  href={`/projets#${p.video.id}`}
+                  className="mb-4 self-center text-sm font-medium text-white/90 underline underline-offset-4 hover:text-white"
+                >
+                  ▶ Voir la vidéo
+                </Link>
+              ) : null}
                 <div
                   className={`mt-auto flex items-end pb-4 ${
                     p.links?.length ? "justify-around" : "justify-center"
