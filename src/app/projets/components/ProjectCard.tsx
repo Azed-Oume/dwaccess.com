@@ -17,8 +17,8 @@ export default function ProjectCard({
 }) {
   const p = project;
 
-  return (
-    <article className="badge-article">
+  const content = (
+    <>
       <div>
         <h2 className="text-lg font-semibold text-white">{p.title}</h2>
         <p className="mt-2 text-sm text-white/70">{p.summary}</p>
@@ -52,8 +52,30 @@ export default function ProjectCard({
         ) : null}
       </div>
 
-      {p.video ? (
-        <figure id={p.video.id} className="mx-auto mt-6 w-full max-w-xs scroll-mt-28">
+      {p.images?.length ? (
+        <div
+          className={p.portrait ? "mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4" : `mt-6 grid gap-3 ${p.images.length === 1 ? "grid-cols-1" : ""} ${p.images.length === 2 ? "grid-cols-2" : ""} ${p.images.length === 3 ? "grid-cols-1 sm:grid-cols-3" : ""} ${p.images.length >= 4 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" : ""} ${p.images.length >= 5 ? "lg:grid-cols-5" : ""}`}
+        >
+          {p.images.map((src, idx) => (
+            <div key={`${src}-${idx}`} className="space-y-2">
+              <ImgThumb src={src} alt={`${p.title} - visuel ${idx + 1}`} onClick={() => onOpenImage(projectIdx, idx)} portrait={p.portrait} />
+              {p.option && p.option[idx] ? <p className="text-xs text-white/70 text-center">{p.option[idx]}</p> : null}
+            </div>
+          ))}
+        </div>
+      ) : null}
+    </>
+  );
+
+  if (!p.video) return <article className="badge-article">{content}</article>;
+
+  // Avec vidéo : contenu sur 2/3 à gauche, vidéo sur 1/3 à droite ; sur mobile, la vidéo passe au-dessus.
+  return (
+    <article className="badge-article">
+      <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
+        <div className="min-w-0 lg:col-span-2">{content}</div>
+
+        <figure id={p.video.id} className="order-first mx-auto w-full max-w-xs scroll-mt-28 lg:order-none lg:max-w-none">
           <video
             controls
             playsInline
@@ -71,20 +93,7 @@ export default function ProjectCard({
             <figcaption className="mt-2 text-center text-xs text-white/70">{p.video.caption}</figcaption>
           ) : null}
         </figure>
-      ) : null}
-
-      {p.images?.length ? (
-        <div
-          className={p.portrait ? "mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4" : `mt-6 grid gap-3 ${p.images.length === 1 ? "grid-cols-1" : ""} ${p.images.length === 2 ? "grid-cols-2" : ""} ${p.images.length === 3 ? "grid-cols-1 sm:grid-cols-3" : ""} ${p.images.length >= 4 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" : ""} ${p.images.length >= 5 ? "lg:grid-cols-5" : ""}`}
-        >
-          {p.images.map((src, idx) => (
-            <div key={`${src}-${idx}`} className="space-y-2">
-              <ImgThumb src={src} alt={`${p.title} - visuel ${idx + 1}`} onClick={() => onOpenImage(projectIdx, idx)} portrait={p.portrait} />
-              {p.option && p.option[idx] ? <p className="text-xs text-white/70 text-center">{p.option[idx]}</p> : null}
-            </div>
-          ))}
-        </div>
-      ) : null}
+      </div>
     </article>
   );
 }

@@ -69,6 +69,12 @@ export const projects: Project[] = [
       "Comptes administrateur et équipier"
     ],
     links: [{ label: "Visiter le site", href: "https://meditransport.dwaccess.fr" }],
+    video: {
+      id: "video-meditransport",
+      src: "/videos/meditransport-presentation.mp4",
+      poster: "/videos/meditransport-presentation-poster.jpg",
+      caption: "Présentation de MediTransport en 40 secondes",
+    },
   },
   {
     title: "VTC Premium (Site de réservation)",
