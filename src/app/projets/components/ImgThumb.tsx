@@ -8,10 +8,12 @@ export default function ImgThumb({
   src,
   alt,
   onClick,
+  portrait = false,
 }: {
   src: string;
   alt: string;
   onClick?: () => void;
+  portrait?: boolean;
 }) {
   return (
     <button
@@ -23,7 +25,7 @@ export default function ImgThumb({
       <img
         src={src}
         alt={alt}
-        className="h-48 w-full rounded-xl object-cover sm:h-56 transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+        className={`${portrait ? "aspect-[484/760] object-top" : "h-48 sm:h-56"} w-full rounded-xl object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]`}
         loading="lazy"
       />
     </button>

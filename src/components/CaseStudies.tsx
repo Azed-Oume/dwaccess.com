@@ -20,7 +20,7 @@ export default function CaseStudies() {
           Produits, outils internes, SaaS : du concret, livré proprement.
         </p>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
           {projects.map((p) => (
             <article
               key={p.title}

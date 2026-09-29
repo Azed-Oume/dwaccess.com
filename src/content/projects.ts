@@ -20,6 +20,7 @@ export type Project = {
   option?: string[];
   links?: ProjectLink[];
   video?: ProjectVideo;
+  portrait?: boolean; // captures d'écran de téléphone (format vertical) : vignettes hautes, sans recadrage du haut
   layout?: "two-images" | "three-images"; // pour décider du rendu
 };
 
@@ -49,40 +50,26 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Taxi Premium (Plateforme SaaS / PWA)",
+    title: "MediTransport (SaaS transport sanitaire / PWA)",
     summary:
-      "Plateforme complète de réservation et de gestion Taxi : parcours client, OTP, back-office, base de données et règles métier. Application installable sur smartphone (PWA).",
-    stack: ["React", "Node.js", "Express", "Sequelize", "MySQL"],
-    highlight: "Architecture orientée métiers avec une forte capacité d’évolution multi-clients.",
+      "Logiciel en ligne pour les sociétés d'ambulances et de VSL : fiches patients complètes (adresse, digicode, médecin, contact d'urgence, besoins particuliers), transports itératifs, recherche instantanée pour les équipiers et import des fichiers existants (Excel ou CSV). Le gérant crée le compte de sa société, puis les postes administrateur et équipier de son équipe. Installable sur Android et iPhone (PWA).",
+    stack: ["React", "TypeScript", "Node.js", "Express", "Sequelize", "MariaDB", "Stripe"],
+    highlight: "Chaque société gère sa propre équipe et ses propres patients, un seul appareil connecté par compte, essai gratuit de 7 jours puis abonnement en ligne.",
+    portrait: true,
     images: [
-      "/images/taxi-premium-wpa-1.jpeg",
-      "/images/taxi-premium-1.png",
-      "/images/taxi-premium-2.png",
-      "/images/taxi-premium-3.png"
+      "/images/meditransport-1.png",
+      "/images/meditransport-2.png",
+      "/images/meditransport-3.png",
+      "/images/meditransport-4.png"
     ],
     option: [
-      "PWA installable",
-      "Back-office complet",
-      "Gestion des courses",
-      "OTP et sécurité"
-    ]
-  },
-  {
-    title: "NavCertiTrans (Electron)",
-    summary:
-      "Navigateur sécurisé et contrôlé pour tablettes et boîtiers : whitelist/blacklist, onglets internes, sécurité renforcée et intégration métier.",
-    stack: ["Electron", "React", "Vite", "Node.js"],
-    highlight: "Contrôle d’accès strict et durcissement (anti-fuite, politique d’URL).",
-    images: [
-      "/images/certitransnav-1.png",
-      "/images/certitransnav-2.png"
+      "Patients et besoins en un coup d'œil",
+      "Fiche terrain : appel, GPS, digicode",
+      "Import Excel / CSV",
+      "Comptes administrateur et équipier"
     ],
-    option: [
-      "Navigation sécurisée",
-      "Whitelist / Blacklist",
-    ]
+    links: [{ label: "Visiter le site", href: "https://meditransport.dwaccess.fr" }],
   },
-
   {
     title: "VTC Premium (Site de réservation)",
     summary:
@@ -106,21 +93,22 @@ export const projects: Project[] = [
     links: [{ label: "Visiter le site", href: "https://vtc-site.vercel.app/" }],
   },
   {
-    title: "Plateforme SaaS de gestion métier",
+    title: "Taxi Premium (Plateforme SaaS / PWA)",
     summary:
-      "Plateforme complète de gestion opérationnelle : RH, suivi de flotte, traçabilité terrain et conformité des données. Conçue pour monter en charge sur un périmètre multi-utilisateurs.",
-    stack: ["React", "Node.js", "Express", "Sequelize", "PostgreSQL", "PM2", "Apache"],
-    highlight: "Approche MVP → itérations rapides → industrialisation progressive. Architecture pensée pour la scalabilité.",
+      "Plateforme complète de réservation et de gestion Taxi : parcours client, OTP, back-office, base de données et règles métier. Application installable sur smartphone (PWA).",
+    stack: ["React", "Node.js", "Express", "Sequelize", "MySQL"],
+    highlight: "Architecture orientée métiers avec une forte capacité d’évolution multi-clients.",
     images: [
-      "/images/certitrans-1.png",
-      "/images/certitrans-2.png"
+      "/images/taxi-premium-wpa-1.jpeg",
+      "/images/taxi-premium-1.png",
+      "/images/taxi-premium-2.png",
+      "/images/taxi-premium-3.png"
     ],
     option: [
-      "Gestion des utilisateurs & rôles",
-      "Suivi de flotte en temps réel",
-      "Traçabilité des actions",
-      "Tableaux de bord personnalisés",
-      "Architecture multi-clients"
-    ],
+      "PWA installable",
+      "Back-office complet",
+      "Gestion des courses",
+      "OTP et sécurité"
+    ]
   },
 ];

@@ -75,11 +75,11 @@ export default function ProjectCard({
 
       {p.images?.length ? (
         <div
-          className={`mt-6 grid gap-3 ${p.images.length === 1 ? "grid-cols-1" : ""} ${p.images.length === 2 ? "grid-cols-2" : ""} ${p.images.length === 3 ? "grid-cols-1 sm:grid-cols-3" : ""} ${p.images.length >= 4 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" : ""} ${p.images.length >= 5 ? "lg:grid-cols-5" : ""}`}
+          className={p.portrait ? "mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4" : `mt-6 grid gap-3 ${p.images.length === 1 ? "grid-cols-1" : ""} ${p.images.length === 2 ? "grid-cols-2" : ""} ${p.images.length === 3 ? "grid-cols-1 sm:grid-cols-3" : ""} ${p.images.length >= 4 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" : ""} ${p.images.length >= 5 ? "lg:grid-cols-5" : ""}`}
         >
           {p.images.map((src, idx) => (
             <div key={`${src}-${idx}`} className="space-y-2">
-              <ImgThumb src={src} alt={`${p.title} - visuel ${idx + 1}`} onClick={() => onOpenImage(projectIdx, idx)} />
+              <ImgThumb src={src} alt={`${p.title} - visuel ${idx + 1}`} onClick={() => onOpenImage(projectIdx, idx)} portrait={p.portrait} />
               {p.option && p.option[idx] ? <p className="text-xs text-white/70 text-center">{p.option[idx]}</p> : null}
             </div>
           ))}
