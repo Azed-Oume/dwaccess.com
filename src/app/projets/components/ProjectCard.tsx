@@ -69,13 +69,14 @@ export default function ProjectCard({
 
   if (!p.video) return <article className="badge-article">{content}</article>;
 
-  // Avec vidéo : contenu sur 2/3 à gauche, vidéo sur 1/3 à droite ; sur mobile, la vidéo passe au-dessus.
+  // Avec vidéo : deux blocs séparés, chacun avec sa bordure — la carte sur 2/3 à gauche, la vidéo sur 1/3 à droite ;
+  // sur mobile, le bloc vidéo passe au-dessus de la carte.
   return (
-    <article className="badge-article">
-      <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
-        <div className="min-w-0 lg:col-span-2">{content}</div>
+    <div className="grid gap-6 lg:grid-cols-3">
+      <article className="badge-article min-w-0 lg:col-span-2">{content}</article>
 
-        <figure id={p.video.id} className="order-first mx-auto w-full max-w-xs scroll-mt-28 lg:order-none lg:max-w-none">
+      <aside className="badge-article order-first flex items-center justify-center lg:order-none">
+        <figure id={p.video.id} className="w-full max-w-xs scroll-mt-28">
           <video
             controls
             playsInline
@@ -93,7 +94,7 @@ export default function ProjectCard({
             <figcaption className="mt-2 text-center text-xs text-white/70">{p.video.caption}</figcaption>
           ) : null}
         </figure>
-      </div>
-    </article>
+      </aside>
+    </div>
   );
 }
